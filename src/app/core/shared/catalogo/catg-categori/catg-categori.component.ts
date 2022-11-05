@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CategoriaI } from 'src/app/core/models/categoria';
 
 @Component({
@@ -8,7 +8,13 @@ import { CategoriaI } from 'src/app/core/models/categoria';
 })
 export class CatgCategoriComponent implements OnInit {
   @Input() categoria: CategoriaI = {};
+  @Output() actualizar = new EventEmitter<void>();
   constructor() {}
 
   ngOnInit(): void {}
+
+  goToProducts() {
+    this.actualizar.emit();
+    console.log('probando');
+  }
 }

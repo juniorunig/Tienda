@@ -1,12 +1,29 @@
-<h2>{{ this.ListName }}</h2>
+<div class="cabecera">
+  <h2>{{ this.ListName }}</h2>
+</div>
+<form class="d-flex mx-2 mt-1" role="search">
+  <input
+    class="form-control me-2"
+    type="search"
+    placeholder="Search"
+    aria-label="Search"
+  />
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
 <hr />
 <div class="container-list">
-  <app-catg-item *ngFor="let producto of productos" [producto]="producto">
-  </app-catg-item>
-  <ng-template *ngIf="false">
+  <div
+    *ngIf="this.ListName === 'Categorias'; else closed"
+    class="container-list"
+  >
     <app-catg-categori
       *ngFor="let categoria of categorias"
       [categoria]="categoria"
+      (actualizar)="actualizar()"
     ></app-catg-categori>
+  </div>
+  <ng-template #closed>
+    <app-catg-item *ngFor="let producto of productos" [producto]="producto">
+    </app-catg-item>
   </ng-template>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CategoriaI } from 'src/app/core/models/categoria';
 import { ProductoI } from 'src/app/core/models/producto';
 
@@ -8,7 +9,7 @@ import { ProductoI } from 'src/app/core/models/producto';
   styleUrls: ['./catg-pages.component.css'],
 })
 export class CatgPagesComponent implements OnInit {
-  ListName = 'productos';
+  ListName = 'Categorias';
 
   productos: ProductoI[] = [
     {
@@ -57,7 +58,12 @@ export class CatgPagesComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  actualizar() {
+    this.ListName = 'productos';
+    this.router.navigate(['/productos']);
+  }
 }
