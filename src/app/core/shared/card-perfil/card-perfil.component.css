@@ -1,0 +1,56 @@
+a {
+  text-decoration: none;
+}
+
+.sub-menu-container {
+  position: absolute;
+  top: 100%;
+  right: 12%;
+  width: 320px;
+  max-height: 0;
+  transition: all 0.5s;
+  overflow: hidden;
+}
+
+.sub-menu-container-open {
+  max-height: 400px;
+}
+
+.sub-menu {
+  background-color: #fff;
+  padding: 20px;
+  margin: 10px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-info h2 {
+  font-weight: 500;
+}
+
+.user-info img {
+  margin-right: 15px;
+}
+
+.sub-menu hr {
+  border: 0;
+  height: 2px;
+  width: 100%;
+  background: #ccc;
+  margin: 15px 0 10px;
+}
+
+.sub-menu-link {
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+.sub-menu-link p {
+  padding-top: 13px;
+  text-align: center;
+  width: 100%;
+  font-size: 13px;
+}

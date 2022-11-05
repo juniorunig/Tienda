@@ -6,6 +6,8 @@ import { TiendaComponent } from './components/tienda/tienda.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { HeaderComponent } from './components/header/header.component';
+import { CardPerfilComponent } from '../core/shared/card-perfil/card-perfil.component';
+import { CardPerfilModule } from '../core/shared/card-perfil/card-perfil.module';
 
 const routes: Routes = [
   {
@@ -36,6 +38,6 @@ const routes: Routes = [
     HomeComponent,
     HeaderComponent,
   ],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, CardPerfilModule, RouterModule.forChild(routes)],
 })
 export class HomeModule {}

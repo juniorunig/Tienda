@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <a class="container-fluid d-flex" (click)="toogleMenu()">
+    <p class="container-fluid mb-0 pt-2 text-center">{{ user.name }}</p>
+    <a class="navbar-brand">
+      <img
+        *ngIf="user.photoUrl"
+        src="{{ user.photoUrl }}"
+        alt="Logo"
+        width="35px"
+        height="35px"
+        class="rounded-circle float-end me-1"
+      />
+    </a>
+  </a>
+</div>
+
+<div class="sub-menu-container" *ngIf="true" id="subMenu">
+  <div class="sub-menu">
+    <div class="user-info">
+      <img
+        [src]="user.photoUrl"
+        alt=""
+        alt="Logo"
+        width="50px"
+        height="50px"
+        class="rounded-circle float-end me-4"
+      />
+      <h2 class="pt-3">{{ user.name }}</h2>
+    </div>
+    <hr />
+    <a class="sub-menu-link d-flex aling-center" (click)="cerrarSesion()">
+      <i class="bx bxs-door-open bx-md me-1"></i>
+      <p>SALIR</p>
+      <i class="bx bx-chevron-right"></i>
+    </a>
+  </div>
+</div>

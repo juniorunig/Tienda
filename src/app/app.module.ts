@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { NotFoundComponent } from './core/shared/not-founded-page/not-found.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
   imports: [
