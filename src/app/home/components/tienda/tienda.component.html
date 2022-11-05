@@ -1,1 +1,5 @@
-<p>tienda works!</p>
+<app-head-buscar [title]="this.TITULO"></app-head-buscar>
+<div class="contenedor">
+  <app-shop-card *ngFor="let tienda of tiendas" [tienda]="tienda">
+  </app-shop-card>
+</div>

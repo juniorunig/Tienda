@@ -1,16 +1,4 @@
-<div class="cabecera">
-  <h2>{{ this.ListName }}</h2>
-</div>
-<form class="d-flex mx-2 mt-1" role="search">
-  <input
-    class="form-control me-2"
-    type="search"
-    placeholder="Search"
-    aria-label="Search"
-  />
-  <button class="btn btn-outline-success" type="submit">Search</button>
-</form>
-<hr />
+<app-head-buscar [title]="this.ListName"></app-head-buscar>
 <div class="container-list">
   <div
     *ngIf="this.ListName === 'Categorias'; else closed"

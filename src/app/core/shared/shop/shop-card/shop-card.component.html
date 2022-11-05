@@ -1,0 +1,19 @@
+<div class="card mx-auto" style="width: 18rem">
+  <div class="bd-placeholder-img card-img-top">
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAoRJREFUaEPtWu01BUEMva8CdKAEKkAFqAAVoAJ0QAWoABWgAjqgA1TAucfsscZkEm/f7M6+l/zc+crNTbLJzk6wYDJZMLxwwPPOuDMsMLwHYAfAJoDlyrzgHcADgFsA15puGsOrAG4ArGkbVTL+DGAXwKukTw4wwT5VyKhmWzK+LoHOASbYsTAbG4FME/QfkQDvA7jUTFn5+AGAq1hHCTATwHY0+QMADcGxnHz+w7Dx1GnWMpkS2FK02V1ItL8eS4DfErG7FbKhRuw0Sjd7TruWoJlc28JYXrEyPO3B3L/qtRLDVSstuJhJZwccrGeyVhdLD7XWGXaGf3xPq7u7vlp6yfDu0hmX5kucL3NNhkh4bFlZLKl1hsQw+8uNaHWyNo3mpCoeTrFUaV3Wpmr/x9C/m0rLcwCHERixA2nNu08dEupv9qk56bL2BQDb2bZcADhSKQ8T+GWDCsTCIp1Mp+QEwGkGEcfOCqxlV0eGY2F7SJJMDHNSyq2b5/QAdiMUuj7B0EiacE/Opbt1Xctujgymzk26Mw/MvWrY/PMjwBglya4GmOOpWK7dAMnYbZTWigm6H2NzTMI8IeYSBxxR6QyPwLfdpdskdY1hqZCIHaHPxFeUYc1gDfBUQ1EqOhzwLF3aGRb81F26ZRgW+mwqNGGTEPfoqTXVx3BWwRYiaxHkgGeZtDQ3tIyPimELIG2OAxYsVEUMa+xZxp1hZ/jbAu7SgicUfQ9bYlSb4zHsMTxnMXwcvn9rrm9NWtn9tH6WF1S8qCol/NmNNxziz6Ctgy26qPtpgHkeD+JVZonfhnk5ZwHb4NZ0UfezAC7F7iD7OuBBzN7joc5wj8Ye5ChneBCz93joF7bJxT3ilGOWAAAAAElFTkSuQmCC"
+    />
+  </div>
+
+  <div class="card-body">
+    <h5 class="card-title">{{ this.tienda.nombre }}</h5>
+    <p class="card-text">{{ this.tienda.descripcion }}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{ this.tienda.propietario }}</li>
+    <li class="list-group-item">{{ this.tienda.direccion }}</li>
+  </ul>
+  <div class="card-body">
+    <button type="button" class="btn btn-primary">SEGUIR</button>
+  </div>
+</div>

@@ -10,6 +10,8 @@ import { HomeComponent } from './home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProductoComponent } from './components/producto/producto.component';
 import { CatalogoModule } from '../core/shared/catalogo/catalogo.module';
+import { ShopModule } from '../core/shared/shop/shop.module';
+import { BuscarModule } from '../core/shared/buscar/buscar.module';
 
 const routes: Routes = [
   {
@@ -44,6 +46,8 @@ const routes: Routes = [
     CommonModule,
     CardPerfilModule,
     CatalogoModule,
+    ShopModule,
+    BuscarModule,
     RouterModule.forChild(routes),
   ],
 })
