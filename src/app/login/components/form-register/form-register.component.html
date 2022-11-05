@@ -1,0 +1,74 @@
+<div class="container w-75 bg-white mt-5 rounded shadow">
+  <div class="row align-tems-streth pb-5">
+    <div
+      class="col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded"
+      style="
+        background-color: #68e1fd;
+        background-image: url(../../../assets/img/Online\ shopping\ _Flatline.svg);
+        background-position: center center;
+      "
+    ></div>
+    <!-- login -->
+
+    <div class="col bg-white pt-5 rounded-end">
+      <div class="text-end"></div>
+      <h2 class="fw-bold text-center pt-2 mb-5">
+        COMPLETAR REGISTRO DE USUARIO
+      </h2>
+
+      <form [formGroup]="registro" (ngSubmit)="registar()">
+        <div class="mv-4">
+          <label for="codigo" class="form-label">Codigo</label>
+          <input
+            type="number"
+            name="codigo"
+            class="form-control"
+            formControlName="codigo"
+          />
+        </div>
+        <div class="mv-4">
+          <label for="Telefono" class="form-label">Telefono</label>
+          <input
+            type="number"
+            name="Telefono"
+            class="form-control"
+            formControlName="Telefono"
+          />
+        </div>
+        <div class="mv-4">
+          <label for="address" class="form-label">Direccion</label>
+          <input
+            type="text"
+            name="address"
+            class="form-control"
+            formControlName="address"
+          />
+        </div>
+        <div class="mv-4">
+          <label for="password" class="form-label">Contraseña</label>
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            formControlName="password"
+          />
+        </div>
+        <div class="mv-4">
+          <label for="repetpassword" class="form-label"
+            >repetir Contraseña</label
+          >
+          <input
+            type="password"
+            name="rp-password"
+            class="form-control"
+            formControlName="rp_password"
+          />
+        </div>
+
+        <div class="d-grid pt-3">
+          <button type="submit" class="btn btn-primary">REGISTRAR</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
