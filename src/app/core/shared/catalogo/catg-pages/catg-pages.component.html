@@ -1,0 +1,12 @@
+<h2>{{ this.ListName }}</h2>
+<hr />
+<div class="container-list">
+  <app-catg-item *ngFor="let producto of productos" [producto]="producto">
+  </app-catg-item>
+  <ng-template *ngIf="false">
+    <app-catg-categori
+      *ngFor="let categoria of categorias"
+      [categoria]="categoria"
+    ></app-catg-categori>
+  </ng-template>
+</div>

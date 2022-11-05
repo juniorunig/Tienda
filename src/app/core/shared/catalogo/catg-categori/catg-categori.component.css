@@ -1,0 +1,23 @@
+* {
+  text-decoration: none;
+  color: black;
+}
+.card-category {
+  width: 165px;
+  height: 90px;
+  background-color: #fff;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.card-link {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.card-text {
+  font-size: large;
+  margin-left: 10px;
+  font-family: monospace;
+}
