@@ -1,0 +1,19 @@
+<div class="container-card">
+  <div class="card-element">
+    <div class="card-icon">
+      <i class="bx bxs-shopping-bag-alt bx-md"></i>
+    </div>
+    <div class="card-detalles">
+      <div class="detalle">
+        <span>{{ this.compra.tipo }}</span>
+        <span class="gris txt-short">{{ this.compra.fecha }}</span>
+      </div>
+      <div class="detalle centrado">
+        <span>${{ this.compra.valor }}</span>
+      </div>
+      <div class="detalle pt-1">
+        <span class="btn btn-success">{{ this.compra.estado }}</span>
+      </div>
+    </div>
+  </div>
+</div>

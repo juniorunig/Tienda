@@ -1,0 +1,36 @@
+.inicio {
+  /* height: 100vh; */
+  display: flex;
+  justify-content: space-around;
+}
+
+.main {
+  width: 60%;
+  background-color: #fff;
+  height: 50%;
+  justify-content: center;
+  /* display: inline-block; */
+  /* height: 100vh; */
+}
+
+.aside {
+  width: 30%;
+  /* height: 100%; */
+  background-color: #fff;
+  /* display: inline-block; */
+  /* height: 50vh; */
+}
+
+@media (max-width: 640px) {
+  .inicio {
+    flex-direction: column;
+  }
+
+  .main {
+    width: 100%;
+  }
+
+  .aside {
+    display: none;
+  }
+}

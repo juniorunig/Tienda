@@ -12,12 +12,18 @@ import { ProductoComponent } from './components/producto/producto.component';
 import { CatalogoModule } from '../core/shared/catalogo/catalogo.module';
 import { ShopModule } from '../core/shared/shop/shop.module';
 import { BuscarModule } from '../core/shared/buscar/buscar.module';
+import { InicioComponent } from './components/Inicio/inicio.component';
+import { PedidosModule } from '../core/shared/pedidos/pedidos.module';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
     children: [
+      {
+        path: 'inicio',
+        component: InicioComponent,
+      },
       {
         path: 'productos',
         component: ProductoComponent,
@@ -41,6 +47,7 @@ const routes: Routes = [
     TiendaComponent,
     HomeComponent,
     HeaderComponent,
+    InicioComponent,
   ],
   imports: [
     CommonModule,
@@ -48,6 +55,7 @@ const routes: Routes = [
     CatalogoModule,
     ShopModule,
     BuscarModule,
+    PedidosModule,
     RouterModule.forChild(routes),
   ],
 })
