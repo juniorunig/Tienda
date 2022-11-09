@@ -1,5 +1,5 @@
 export interface CategoriaI {
-  iD?: string;
+  id?: string;
   nombre?: string;
   imgUrl?: string;
   cantidad?: number;

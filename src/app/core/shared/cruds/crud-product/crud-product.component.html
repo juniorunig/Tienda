@@ -1,0 +1,69 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Sistema de gestion de productos</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <button
+          class="btn btn-outline-success"
+          data-bs-toggle="modal"
+          data-bs-target="#addEmployee"
+          type="submit"
+        >
+          AGREGAR
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col" *ngFor="let cabecera of CABECERAS_PRODUCTS">
+          {{ cabecera }}
+        </th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of products">
+        <td>{{ item.nombre }}</td>
+        <td>{{ item.categoria }}</td>
+        <td>{{ item.precio }}</td>
+        <td>{{ item.unidad }}</td>
+        <td>{{ item.marca }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-outline-primary me-2"
+            data-bs-toggle="modal"
+            data-bs-target="#editEmployee"
+            (click)="updateProdect(item)"
+            Edit
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-danger"
+            (click)="DeleteProduct(item)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <app-modal-edit></app-modal-edit>
+  <app-modal-add></app-modal-add>
+</div>

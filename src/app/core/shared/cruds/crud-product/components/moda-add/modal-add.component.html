@@ -1,0 +1,95 @@
+<!-- Add employee modal -->
+<div
+  class="modal fade"
+  id="addEmployee"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new Employee</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- [formGroup]="empDetail" -->
+        <form [formGroup]="formAdd">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">nombre</label>
+            <input
+              type="text"
+              formControlName="nombre"
+              class="form-control"
+              id="nombre"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">categoria</label>
+            <input
+              type="text"
+              formControlName="categoria"
+              class="form-control"
+              id="categoria"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">precio</label>
+            <input
+              type="number"
+              formControlName="precio"
+              class="form-control"
+              id="precio"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">unidad</label>
+            <input
+              type="text"
+              formControlName="unidad"
+              class="form-control"
+              id="unidad"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">marca</label>
+            <input
+              type="text"
+              formControlName="marca"
+              class="form-control"
+              id="marca"
+              aria-describedby="emailHelp"
+            />
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-success"
+              data-bs-dismiss="modal"
+              (click)="registrar()"
+            >
+              AGREGAR
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

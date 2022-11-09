@@ -14,6 +14,7 @@ import { ShopModule } from '../core/shared/shop/shop.module';
 import { BuscarModule } from '../core/shared/buscar/buscar.module';
 import { InicioComponent } from './components/Inicio/inicio.component';
 import { PedidosModule } from '../core/shared/pedidos/pedidos.module';
+import { CrudsModule } from '../core/shared/cruds/cruds.module';
 
 const routes: Routes = [
   {
@@ -56,6 +57,7 @@ const routes: Routes = [
     ShopModule,
     BuscarModule,
     PedidosModule,
+    CrudsModule,
     RouterModule.forChild(routes),
   ],
 })
