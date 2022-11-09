@@ -6,7 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserI } from 'src/app/core/models/user';
 import { AuthService } from 'src/app/service/auth.service';
+import { FirestoreService } from 'src/app/service/firestore.service';
 
 @Component({
   selector: 'app-form-login',
@@ -21,7 +23,8 @@ export class FormLoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private firestore: FirestoreService
   ) {
     this.login = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -50,8 +53,22 @@ export class FormLoginComponent implements OnInit {
 
   // login con google
   LoginWithGoogle() {
+    const usuario: UserI = {
+      name: '',
+      Email: '',
+    };
     this.auth.googleAuth().then((user) => {
-      console.log(user);
+      this.auth.getStateUser().subscribe((us) => {
+        if (us !== null) {
+          usuario.id = us.uid!;
+          usuario.name = us.displayName!;
+          usuario.Email = us.email!;
+          usuario.photoUrl = us.photoURL!;
+          console.log(usuario.id + 'este es el usuario');
+          this.firestore.savesUser(usuario);
+        }
+      });
+
       this.router.navigate(['/home']);
     });
   }

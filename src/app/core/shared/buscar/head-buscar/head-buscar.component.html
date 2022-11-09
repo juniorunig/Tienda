@@ -1,5 +1,14 @@
 <div class="cabecera">
   <h2>{{ this.title }}</h2>
+  <button
+    *ngIf="this.title === 'productos'"
+    class="btn btn-primary me-3 mb-1"
+    href=""
+    role="button"
+    (submit)="volver()"
+  >
+    <i class="bx bx-arrow-back" (click)="volver()"></i>
+  </button>
 </div>
 <form class="d-flex mx-2 mt-1" role="search">
   <input

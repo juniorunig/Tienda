@@ -1,5 +1,5 @@
 <div class="container w-75 bg-white mt-5 rounded shadow">
-  <div class="row align-tems-streth pb-5">
+  <div class="row align-tems-streth pb-0">
     <div
       class="col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded"
       style="
@@ -12,12 +12,32 @@
 
     <div class="col bg-white pt-5 rounded-end">
       <div class="text-end"></div>
-      <h2 class="fw-bold text-center pt-2 mb-5">
-        COMPLETAR REGISTRO DE USUARIO
-      </h2>
+      <div *ngIf="this.isInvalid">
+        <small class="text-danger fw-bold">{{ MESSAGE_ERROR }}</small>
+      </div>
+      <h2 class="fw-bold text-center pt-2 mb-5">REGISTRO DE USUARIO</h2>
 
       <form [formGroup]="registro" (ngSubmit)="registar()">
-        <div class="mv-4">
+        <span class="form-label">Nombres y Apellidos</span>
+        <div class="input-group mt-2">
+          <input
+            type="text"
+            aria-label="Nombre"
+            formControlName="nombre"
+            placeholder="Nombres"
+            class="form-control"
+            [class.is-invalid]="registro.get('nombre')?.errors?.['required'] && registro.get('nombre')?.touched"
+          />
+          <input
+            type="text"
+            aria-label="Apellido"
+            formControlName="apellido"
+            placeholder="Apellidos"
+            class="form-control"
+            [class.is-invalid]="registro.get('apellido')?.errors?.['required'] && registro.get('apellido')?.touched"
+          />
+        </div>
+        <!-- <div class="mv-4">
           <label for="codigo" class="form-label">Codigo</label>
           <input
             type="number"
@@ -25,8 +45,8 @@
             class="form-control"
             formControlName="codigo"
           />
-        </div>
-        <div class="mv-4">
+        </div> -->
+        <!-- <div class="mv-4">
           <label for="Telefono" class="form-label">Telefono</label>
           <input
             type="number"
@@ -34,15 +54,28 @@
             class="form-control"
             formControlName="Telefono"
           />
-        </div>
-        <div class="mv-4">
-          <label for="address" class="form-label">Direccion</label>
+        </div> -->
+        <div class="mv-4 mt-4">
+          <label for="email" class="form-label">Correo</label>
           <input
-            type="text"
-            name="address"
+            type="email"
+            name="correo"
             class="form-control"
-            formControlName="address"
+            formControlName="correo"
+            [class.is-invalid]="
+              registro.get('correo')?.invalid && registro.get('correo')?.touched
+            "
           />
+          <div
+            *ngIf="(getEmail?.invalid && getEmail?.touched) || getEmail?.dirty"
+          >
+            <small *ngIf="getEmail?.errors?.['required']" class="text-danger"
+              >este campo es necesario</small
+            >
+            <small *ngIf="getEmail?.errors?.['pattern']" class="text-danger"
+              >Introdusca un correo valido</small
+            >
+          </div>
         </div>
         <div class="mv-4">
           <label for="password" class="form-label">Contraseña</label>
@@ -51,21 +84,43 @@
             name="password"
             class="form-control"
             formControlName="password"
+            [class.is-invalid]="registro.get('password')?.errors?.['required'] && registro.get('password')?.touched"
           />
+          <div
+            *ngIf="
+              (getCampo('password')?.invalid &&
+                getCampo('password')?.touched) ||
+              getCampo('password')?.dirty
+            "
+          >
+            <!-- <small
+              *ngIf="getCampo('password')?.errors?.['required']"
+              class="text-danger"
+              >este campo es necesario</small
+            > -->
+            <small *ngIf="passwordLength.length < 8" class="text-danger">
+              Contraseña de tener minimo 8 caracteres</small
+            >
+          </div>
         </div>
         <div class="mv-4">
           <label for="repetpassword" class="form-label"
-            >repetir Contraseña</label
+            >Confirmar Contraseña</label
           >
           <input
             type="password"
             name="rp-password"
             class="form-control"
             formControlName="rp_password"
+            [class.is-invalid]="registro.get('rp_password')?.errors?.['required'] && registro.get('rp_password')?.touched"
           />
+
+          <div *ngIf="passwordValidate && controlName('rp_password')?.touched">
+            <small class="text-danger">contraseña no coinciden</small>
+          </div>
         </div>
 
-        <div class="d-grid pt-3">
+        <div class="d-grid py-3">
           <button type="submit" class="btn btn-primary">REGISTRAR</button>
         </div>
       </form>

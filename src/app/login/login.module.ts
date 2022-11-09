@@ -5,6 +5,8 @@ import { FormRegisterComponent } from './components/form-register/form-register.
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { FirestoreService } from '../service/firestore.service';
 
 const routes: Routes = [
   {
@@ -25,6 +27,13 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [FormLoginComponent, FormRegisterComponent, LoginComponent],
-  imports: [CommonModule, ReactiveFormsModule, RouterModule.forChild(routes)],
+
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    AngularFireAuthModule,
+    RouterModule.forChild(routes),
+  ],
+  providers: [FirestoreService],
 })
 export class LoginModule {}

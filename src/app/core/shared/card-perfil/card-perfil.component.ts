@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
+import { FirestoreService } from 'src/app/service/firestore.service';
 import { UserI } from '../../models/user';
 
 @Component({
@@ -9,23 +10,16 @@ import { UserI } from '../../models/user';
   styleUrls: ['./card-perfil.component.css'],
 })
 export class CardPerfilComponent implements OnInit {
-  perfilUrl: string = '../../../assets/img/cr7-perfil.png';
+  perfilUrl: string = '/assets/img/cr7-perfil.png';
   name: string = 'no existe user';
-  defaultImg: string = '../../../assets/img/cr7-perfil.png';
+  defaultImg: string = '/assets/img/cr7-perfil.png';
   user2: any;
-  user: UserI = {
-    id: '',
-    name: '',
-    numberPhone: '',
-    address: '',
-    emailVerified: false,
-    photoUrl: '',
-    Email: '',
-    Password: '',
-    Rol: 'user',
-    credito: 0,
-  };
-  constructor(private auth: AuthService, private router: Router) {}
+  user: UserI = {};
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private fire: FirestoreService
+  ) {}
 
   ngOnInit(): void {
     // this.getDataUser();
@@ -60,7 +54,9 @@ export class CardPerfilComponent implements OnInit {
   async getUser() {
     const user2 = await this.auth.getStateUser().subscribe((user) => {
       // this.user.photoUrl = user?.photoURL!;
+
       this.user.name = user?.displayName!;
+      this.user.photoUrl = this.perfilUrl;
     });
   }
 }

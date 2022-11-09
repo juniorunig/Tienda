@@ -21,3 +21,7 @@
   margin-left: 10px;
   font-family: monospace;
 }
+
+.card-category:hover {
+  background-color: aqua;
+}

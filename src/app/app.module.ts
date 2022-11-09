@@ -8,6 +8,10 @@ import { NotFoundComponent } from './core/shared/not-founded-page/not-found.comp
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { PedidosCardComponent } from './core/shared/pedidos/pedidos-card/pedidos-card.component';
+import { provideFirestore } from '@angular/fire/firestore';
+import { getFirestore } from 'firebase/firestore';
+import { provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp } from 'firebase/app';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
@@ -15,7 +19,8 @@ import { PedidosCardComponent } from './core/shared/pedidos/pedidos-card/pedidos
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent],
