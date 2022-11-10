@@ -18,7 +18,9 @@ export class FormRegisterComponent implements OnInit {
   MESSAGE_ERROR = 'DATOS INVALIDOS';
   isInvalid = false;
   registro: FormGroup;
-  user: UserI = {};
+  user: UserI = {
+    Rol: 'user',
+  };
   patternEmail: string = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
   constructor(
     private fb: FormBuilder,
@@ -55,8 +57,6 @@ export class FormRegisterComponent implements OnInit {
     this.user.Email = this.registro.value.correo;
     this.user.Password = this.registro.value.password;
 
-    console.log(this.user + ' datos del usurio');
-
     const respuesta = await this.auth
       .registroUser(this.user.Email, this.user.Password)
       .then((user) => {
@@ -77,10 +77,6 @@ export class FormRegisterComponent implements OnInit {
   }
 
   get getEmail() {
-    // return this.registro.get('correo') !== undefined &&
-    //   this.registro.get('correo') !== null
-    //   ? this.registro.get('correo')
-    //   : '';
     return this.registro.get('correo');
   }
 

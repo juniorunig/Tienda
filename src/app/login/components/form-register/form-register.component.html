@@ -37,24 +37,7 @@
             [class.is-invalid]="registro.get('apellido')?.errors?.['required'] && registro.get('apellido')?.touched"
           />
         </div>
-        <!-- <div class="mv-4">
-          <label for="codigo" class="form-label">Codigo</label>
-          <input
-            type="number"
-            name="codigo"
-            class="form-control"
-            formControlName="codigo"
-          />
-        </div> -->
-        <!-- <div class="mv-4">
-          <label for="Telefono" class="form-label">Telefono</label>
-          <input
-            type="number"
-            name="Telefono"
-            class="form-control"
-            formControlName="Telefono"
-          />
-        </div> -->
+
         <div class="mv-4 mt-4">
           <label for="email" class="form-label">Correo</label>
           <input
@@ -93,11 +76,6 @@
               getCampo('password')?.dirty
             "
           >
-            <!-- <small
-              *ngIf="getCampo('password')?.errors?.['required']"
-              class="text-danger"
-              >este campo es necesario</small
-            > -->
             <small *ngIf="passwordLength.length < 8" class="text-danger">
               Contraseña de tener minimo 8 caracteres</small
             >

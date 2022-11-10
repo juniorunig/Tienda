@@ -1,0 +1,21 @@
+<div class="container shadow bg-light rounded mb-3">
+  <div class="card-element">
+    <div class="card-icon">
+      <i class="bx bxs-shopping-bag-alt bx-md"></i>
+    </div>
+    <div class="card-detalles">
+      <div class="detalle">
+        <span>{{ this.product.nombre }}</span>
+        <span class="gris txt-short">{{ this.product.marca }}</span>
+      </div>
+      <div class="detalle centrado">
+        <span>${{ this.product.precio }}</span>
+      </div>
+      <div class="detalle pt-1">
+        <button class="btn btn-danger" (click)="eliminarProduct()">
+          quitar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

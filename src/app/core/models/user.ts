@@ -8,6 +8,6 @@ export interface UserI {
   photoUrl?: string;
   Email?: string;
   Password?: string;
-  Rol?: 'admin' | 'user';
+  Rol?: string;
   credito?: number;
 }

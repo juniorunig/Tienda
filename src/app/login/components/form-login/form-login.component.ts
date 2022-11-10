@@ -23,8 +23,7 @@ export class FormLoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
-    private router: Router,
-    private firestore: FirestoreService
+    private router: Router
   ) {
     this.login = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -52,23 +51,8 @@ export class FormLoginComponent implements OnInit {
   }
 
   // login con google
-  LoginWithGoogle() {
-    const usuario: UserI = {
-      name: '',
-      Email: '',
-    };
-    this.auth.googleAuth().then((user) => {
-      this.auth.getStateUser().subscribe((us) => {
-        if (us !== null) {
-          usuario.id = us.uid!;
-          usuario.name = us.displayName!;
-          usuario.Email = us.email!;
-          usuario.photoUrl = us.photoURL!;
-          console.log(usuario.id + 'este es el usuario');
-          this.firestore.savesUser(usuario);
-        }
-      });
-
+  async LoginWithGoogle() {
+    await this.auth.googleAuth().then((user) => {
       this.router.navigate(['/home']);
     });
   }

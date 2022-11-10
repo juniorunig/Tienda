@@ -7,6 +7,7 @@ import { LoginComponent } from './login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { FirestoreService } from '../service/firestore.service';
+import { AuthService } from '../service/auth.service';
 
 const routes: Routes = [
   {
@@ -34,6 +35,6 @@ const routes: Routes = [
     AngularFireAuthModule,
     RouterModule.forChild(routes),
   ],
-  providers: [FirestoreService],
+  providers: [FirestoreService, AuthService],
 })
 export class LoginModule {}

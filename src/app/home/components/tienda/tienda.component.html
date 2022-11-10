@@ -1,6 +1,13 @@
-<app-head-buscar [title]="this.TITULO"></app-head-buscar>
-<div class="contenedor">
-  <!-- <app-shop-card *ngFor="let tienda of tiendas" [tienda]="tienda">
-  </app-shop-card> -->
-  <app-crud-product></app-crud-product>
+<!-- <app-head-buscar [title]="this.TITULO"></app-head-buscar> -->
+<div class="container-fluid">
+  <div *ngIf="this.PERMISO == 'user'" class="container-fluid">
+    <app-shop-card
+      *ngFor="let tienda of tiendas"
+      [tienda]="tienda"
+      class="text-center"
+    >
+    </app-shop-card>
+  </div>
+
+  <app-crud-product *ngIf="PERMISO == 'admin'"></app-crud-product>
 </div>

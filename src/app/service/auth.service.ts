@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { GoogleAuthProvider } from '@firebase/auth';
-
+import { UserI } from '../core/models/user';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  user: UserI = {};
   constructor(private auth: AngularFireAuth, private router: Router) {}
 
   // sign in with google
@@ -44,23 +45,17 @@ export class AuthService {
     return this.auth.authState;
   }
 
-  async getCurrentUser() {
-    const user = await this.auth.currentUser;
-    if (user === undefined) {
-      console.log('usurio actual error');
-      return null;
-    } else {
-      return user;
+  getUid() {
+    let id;
+    this.getStateUser().subscribe((res) => {
+      id = res?.uid;
+      return id;
+    });
+    if (id) {
+      console.log(+'+++++++');
+      return id;
     }
-  }
-
-  async getUid() {
-    const user = await this.auth.currentUser;
-    if (user === undefined) {
-      console.log('el Uid no esta disponible -- archivo authservice');
-      return null;
-    } else {
-      return user?.uid;
-    }
+    console.log('el Uid no esta disponible -- archivo authservice');
+    return null;
   }
 }

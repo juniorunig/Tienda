@@ -147,4 +147,13 @@ a {
     margin: 0;
     column-gap: 10px;
   }
+
+  .cart {
+    float: left;
+    margin-left: 5px;
+  }
+
+  .nav {
+    column-gap: 10px;
+  }
 }

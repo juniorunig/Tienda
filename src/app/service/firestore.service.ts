@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UserI } from '../core/models/user';
-import { collection, deleteDoc, doc } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getDoc } from 'firebase/firestore';
 import { collectionData, Firestore, updateDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { CategoriaI } from '../core/models/categoria';
@@ -18,18 +18,15 @@ export class FirestoreService {
 
   savesUser(user: UserI) {
     if (user.id === undefined) {
-      console.log('usuario nulo');
-
       return;
-    } else {
-      this.createDoc(user, this.pathUser, user.id)
-        .then((inf) => {
-          console.log('todo correcto desde el fireservice');
-        })
-        .catch((error) => {
-          console.log('fire service : error de saveuser');
-        });
     }
+    this.createDoc(user, this.pathUser, user.id)
+      .then((inf) => {
+        console.log('todo correcto desde el fireservice');
+      })
+      .catch((error) => {
+        console.log('fire service : error de saveuser');
+      });
   }
 
   private createDoc(data: any, path: string, id: string) {
@@ -47,15 +44,10 @@ export class FirestoreService {
     return deleteDoc(userRef);
   }
 
-  getOneUser(id: string) {
-    let us: UserI[] = [];
-    this.getAllUser().subscribe((user) => {
-      us = user.filter((user) => {
-        user.id === id;
-      });
-    });
-
-    return us[0];
+  async getOne<tipo>(path: string, id: string) {
+    // const docRef = doc(this.fire, `${this.pathUser}/${id}`);
+    // return getDoc(docRef);
+    return this.firestore.collection(path).doc<tipo>(id).valueChanges();
   }
 
   getAllCategories(): Observable<CategoriaI[]> {
@@ -108,5 +100,22 @@ export class FirestoreService {
 
   GenerarId() {
     return this.firestore.createId();
+  }
+
+  existe(email: string) {
+    let existe = false;
+    if (email !== undefined) {
+      const res = this.getAllUser().subscribe((usuarios) => {
+        usuarios.forEach((us) => {
+          if (us.Email === email) {
+            console.log('el usurio existe');
+            existe = true;
+            return;
+          }
+        });
+      });
+    }
+
+    return existe;
   }
 }

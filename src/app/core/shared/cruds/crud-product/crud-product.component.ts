@@ -10,7 +10,7 @@ import { ModalEditComponent } from './components';
 })
 export class CrudProductComponent implements OnInit {
   CABECERAS_PRODUCTS = ['nombre', 'categoria', 'precio', 'unidad', 'marca'];
-  CABECERA_CATEGORIES = [''];
+  CABECERA_CATEGORIES = ['nombre'];
   CABECERA_USURIO = [''];
   productUp: ProductoI = {};
   products: ProductoI[] = [];

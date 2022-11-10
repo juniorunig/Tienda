@@ -1,7 +1,9 @@
-<div class="container-fluid">
+<div class="container-fluid bg-light rounded-2">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Sistema de gestion de productos</a>
+      <a class="navbar-brand fw-bold" href="#"
+        >Sistema de gestion de productos</a
+      >
       <button
         class="navbar-toggler"
         type="button"
@@ -15,7 +17,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <button
-          class="btn btn-outline-success"
+          class="btn btn-success"
           data-bs-toggle="modal"
           data-bs-target="#addEmployee"
           type="submit"
@@ -45,20 +47,20 @@
         <td>
           <button
             type="button"
-            class="btn btn-outline-primary me-2"
+            class="btn btn-primary me-2"
             data-bs-toggle="modal"
             data-bs-target="#editEmployee"
             (click)="updateProdect(item)"
             Edit
           >
-            Edit
+            Editar
           </button>
           <button
             type="button"
-            class="btn btn-outline-danger"
+            class="btn btn-danger"
             (click)="DeleteProduct(item)"
           >
-            Delete
+            Eliminar
           </button>
         </td>
       </tr>

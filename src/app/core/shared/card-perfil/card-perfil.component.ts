@@ -22,7 +22,6 @@ export class CardPerfilComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.getDataUser();
     this.getUser();
   }
 
@@ -35,28 +34,12 @@ export class CardPerfilComponent implements OnInit {
     this.auth.logOut();
   }
 
-  getDataUser() {
-    this.auth.getStateUser().subscribe((res) => {
-      this.user2 = res;
-      if (res !== null) {
-        this.user.name = res.displayName!;
-        if (typeof res.photoURL != undefined) {
-          // this.user.photoUrl = res.photoURL!;
-          console.log('imagen encontrada');
-        }
-        console.log('se optuvo el nombre');
-      } else {
-        console.log('no se encontraron datos');
-      }
-    });
-  }
-
   async getUser() {
     const user2 = await this.auth.getStateUser().subscribe((user) => {
-      // this.user.photoUrl = user?.photoURL!;
-
-      this.user.name = user?.displayName!;
-      this.user.photoUrl = this.perfilUrl;
+      // this.user.name = user?.displayName!;
+      this.user.photoUrl =
+        user?.photoURL === undefined ? this.perfilUrl : user?.photoURL!;
+      this.user.id = user?.uid!;
     });
   }
 }

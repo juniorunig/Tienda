@@ -15,6 +15,12 @@ import { BuscarModule } from '../core/shared/buscar/buscar.module';
 import { InicioComponent } from './components/Inicio/inicio.component';
 import { PedidosModule } from '../core/shared/pedidos/pedidos.module';
 import { CrudsModule } from '../core/shared/cruds/cruds.module';
+import { FirestoreService } from '../service/firestore.service';
+import { AuthService } from '../service/auth.service';
+import { CartLogoModule } from '../core/shared/cart-logo/cart-logo.module';
+import { ComprasModule } from './pages/compras/compras.module';
+import { ComprasComponent } from './pages/compras/compras.component';
+import { ProductCartComponent } from './pages/components/product-cart/product-cart.component';
 
 const routes: Routes = [
   {
@@ -37,6 +43,10 @@ const routes: Routes = [
         path: 'tienda',
         component: TiendaComponent,
       },
+      {
+        path: 'tienda/compras',
+        component: ComprasComponent,
+      },
     ],
   },
 ];
@@ -58,7 +68,10 @@ const routes: Routes = [
     BuscarModule,
     PedidosModule,
     CrudsModule,
+    CartLogoModule,
+    ComprasModule,
     RouterModule.forChild(routes),
   ],
+  providers: [FirestoreService, AuthService],
 })
 export class HomeModule {}
