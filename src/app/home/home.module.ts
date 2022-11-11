@@ -21,6 +21,7 @@ import { CartLogoModule } from '../core/shared/cart-logo/cart-logo.module';
 import { ComprasModule } from './pages/compras/compras.module';
 import { ComprasComponent } from './pages/compras/compras.component';
 import { ProductCartComponent } from './pages/components/product-cart/product-cart.component';
+import { CardCreditoModule } from '../core/shared/card-credito/card-credito.module';
 
 const routes: Routes = [
   {
@@ -70,6 +71,7 @@ const routes: Routes = [
     CrudsModule,
     CartLogoModule,
     ComprasModule,
+    CardCreditoModule,
     RouterModule.forChild(routes),
   ],
   providers: [FirestoreService, AuthService],

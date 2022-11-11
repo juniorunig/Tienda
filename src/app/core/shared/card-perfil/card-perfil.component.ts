@@ -37,7 +37,7 @@ export class CardPerfilComponent implements OnInit {
   async getUser() {
     const user2 = await this.auth.getStateUser().subscribe((user) => {
       this.user.name = user?.displayName!;
-      this.user.photoUrl =
+      this.user.photoURl =
         user?.photoURL === undefined ? this.perfilUrl : user?.photoURL!;
       this.user.id = user?.uid!;
     });

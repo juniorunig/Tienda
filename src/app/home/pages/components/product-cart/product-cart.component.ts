@@ -9,6 +9,7 @@ import { ProductoI } from 'src/app/core/models/producto';
 export class ProductCartComponent implements OnInit {
   @Input() product: ProductoI = {};
   @Output() Eliminar = new EventEmitter<ProductoI>();
+  @Input() DesactivarDelte!: boolean;
   constructor() {}
 
   ngOnInit(): void {}

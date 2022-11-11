@@ -15,6 +15,7 @@ export class TiendaComponent implements OnInit {
   user: UserI = {};
   ROL: 'user' | 'admin' = 'user';
   ID: any = this.user.id;
+  HABILITAR_PAGE = false;
   tiendas: tiendaI[] = [
     {
       id: '24',
@@ -24,6 +25,7 @@ export class TiendaComponent implements OnInit {
       propietario: 'pepe',
     },
   ];
+
   constructor(private firestore: FirestoreService, private auth: AuthService) {
     this.auth.getStateUser().subscribe((res) => {
       if (res) {

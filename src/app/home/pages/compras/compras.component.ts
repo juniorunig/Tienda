@@ -5,6 +5,7 @@ import { ProductoI } from 'src/app/core/models/producto';
 import { AuthService } from 'src/app/service/auth.service';
 import { ComprasService } from 'src/app/service/compras.service';
 import { ShopingCartService } from 'src/app/service/shoping-cart.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-compras',
@@ -15,10 +16,11 @@ export class ComprasComponent implements OnInit {
   producst: ProductoI[] = [];
   compra: compraI = {};
   TIPO_COMPRAS = 'credito';
-  ESTADO_COMPRAS = 'hecho';
+  ESTADO_COMPRAS = 'pendiente';
   constructor(
     private shooping: ShopingCartService,
-    private compras: ComprasService
+    private compras: ComprasService,
+    private userActual: UserService
   ) {
     this.producst = this.shooping.products;
   }
@@ -53,6 +55,9 @@ export class ComprasComponent implements OnInit {
       this.compra.fecha = new Date(Date.now()).toDateString() + '';
       this.compra.estado = this.ESTADO_COMPRAS;
       this.compra.valor = this.precioTotatl();
+      this.compra.id_user = this.userActual.getID;
+      this.compra.name_user = this.userActual.GetName;
+      console.log(this.compra);
       this.compras.SaveCompras(this.compra);
       this.shooping.vaciar();
     }

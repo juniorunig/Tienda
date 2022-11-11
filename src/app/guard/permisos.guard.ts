@@ -18,11 +18,8 @@ export class PermisosGuard implements CanActivate {
     const user = await this.auth.getCurrentUser;
     const isAcutenticate = user != null ? true : false;
     if (!isAcutenticate) {
-      console.log('no se ha autenticado');
-
       this.router.navigateByUrl('/login');
     }
-    console.log('esta logeado');
 
     return isAcutenticate;
   }

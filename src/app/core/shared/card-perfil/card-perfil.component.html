@@ -3,8 +3,8 @@
     <p class="container mb-0 pt-2 text-center none">{{ user.name }}</p>
     <a class="navbar-brand">
       <img
-        *ngIf="user.photoUrl"
-        src="{{ user.photoUrl }}"
+        *ngIf="user.photoURl"
+        src="/assets/icons/user.png"
         alt="Logo"
         width="35px"
         height="35px"
@@ -18,7 +18,7 @@
   <div class="sub-menu">
     <div class="user-info">
       <img
-        [src]="user.photoUrl"
+        src="/assets/icons/user.png"
         alt=""
         alt="Logo"
         width="50px"

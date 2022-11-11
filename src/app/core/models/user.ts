@@ -1,3 +1,5 @@
+import { compraI } from './compra';
+
 export interface UserI {
   id?: string;
   name?: string;
@@ -5,9 +7,10 @@ export interface UserI {
   numberPhone?: string;
   address?: string;
   emailVerified?: boolean;
-  photoUrl?: string;
+  photoURl?: string;
   Email?: string;
   Password?: string;
   Rol?: string;
   credito?: number;
+  compras?: compraI[];
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { compraI } from 'src/app/core/models/compra';
 import { ComprasService } from 'src/app/service/compras.service';
 import { FirestoreService } from 'src/app/service/firestore.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-inicio',
@@ -11,7 +12,11 @@ import { FirestoreService } from 'src/app/service/firestore.service';
 export class InicioComponent implements OnInit {
   compras: compraI[] = [];
   comprasAntiguas: compraI[] = [];
-  constructor(compraservice: ComprasService, private fire: FirestoreService) {
+  constructor(
+    compraservice: ComprasService,
+    private fire: FirestoreService,
+    private user: UserService
+  ) {
     if (this.compras) {
       this.compras = compraservice.getCompras;
     }
@@ -22,11 +27,27 @@ export class InicioComponent implements OnInit {
   ngOnInit(): void {}
 
   getComprasAntiguas() {
-    this.fire.getAllCompras().subscribe((el) => {
-      if (el) {
-        el.forEach((item) => {
-          this.comprasAntiguas.push(item);
-        });
+    this.fire.getAllCompras().subscribe((compras) => {
+      if (compras) {
+        if (this.user.getRol == 'admin') {
+          console.log('opteniendo las compras pra el admin');
+
+          compras.forEach((comp) => {
+            this.comprasAntiguas.push(comp);
+          });
+        }
+        if (this.user.getRol == 'user') {
+          console.log('opteniendo las compras para el user');
+
+          this.fire.getAllCompras().subscribe((compras) => {
+            if (compras) {
+              let com = compras.filter(
+                (compra) => compra.id_user === this.user.getID
+              );
+              this.comprasAntiguas = com;
+            }
+          });
+        }
       }
     });
   }

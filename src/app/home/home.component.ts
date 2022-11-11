@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserI } from '../core/models/user';
 import { AuthService } from '../service/auth.service';
 import { FirestoreService } from '../service/firestore.service';
+import { UserService } from '../service/user.service';
 import { TiendaComponent } from './components/tienda/tienda.component';
 
 @Component({
@@ -28,7 +29,7 @@ export class HomeComponent implements OnInit {
           this.firestore.existe(usuario.Email);
           return;
         }
-        usuario.photoUrl = us.photoURL!;
+        usuario.photoURl = us.photoURL!;
         usuario.Rol = 'user';
         this.firestore.savesUser(usuario);
       }

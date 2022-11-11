@@ -7,7 +7,7 @@ import { ProductCartComponent } from '../components/product-cart/product-cart.co
 @NgModule({
   declarations: [ComprasComponent, ProductCartComponent],
   imports: [CommonModule],
-  exports: [ComprasComponent],
+  exports: [ComprasComponent, ProductCartComponent],
   providers: [ShopingCartService],
 })
 export class ComprasModule {}

@@ -12,7 +12,19 @@
         <span>${{ this.compra.valor }}</span>
       </div>
       <div class="detalle pt-1">
-        <span class="btn btn-success">{{ this.compra.estado }}</span>
+        <span
+          *ngIf="this.compra.estado == 'pendiente'"
+          class="btn btn-warning"
+          >{{ this.compra.estado }}</span
+        >
+        <span *ngIf="this.compra.estado == 'hecho'" class="btn btn-success">{{
+          this.compra.estado
+        }}</span>
+        <span
+          *ngIf="this.compra.estado == 'cancelado'"
+          class="btn btn-danger"
+          >{{ this.compra.estado }}</span
+        >
       </div>
     </div>
   </div>

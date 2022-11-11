@@ -137,4 +137,9 @@ export class FirestoreService {
     const UserRef = collection(this.fire, this.pathCompras);
     return collectionData(UserRef, { idField: 'id' }) as Observable<compraI[]>;
   }
+
+  upDateEstadoCompra(compra: compraI) {
+    const id = compra.id;
+    return this.firestore.collection(this.pathCompras).doc(id).update(compra);
+  }
 }

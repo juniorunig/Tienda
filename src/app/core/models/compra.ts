@@ -7,4 +7,6 @@ export interface compraI {
   fecha?: string;
   estado?: string;
   productos?: ProductoI[];
+  id_user?: string;
+  name_user?: string;
 }

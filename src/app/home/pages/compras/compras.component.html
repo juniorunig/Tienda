@@ -4,6 +4,7 @@
   <app-product-cart
     *ngFor="let item of producst"
     [product]="item"
+    [DesactivarDelte]="true"
     (Eliminar)="EliminarProduct($event)"
   ></app-product-cart>
   <div *ngIf="this.producst.length == 0" class="mb-5">NO HAY PRODUCTOS AUN</div>

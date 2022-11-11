@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { GoogleAuthProvider, User } from '@firebase/auth';
 
 import { UserI } from '../core/models/user';
+import { UserService } from './user.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -40,7 +41,6 @@ export class AuthService {
   }
 
   logOut() {
-    this.LOGGEDIN = false;
     this.auth.signOut().then((User) => {
       this.router.navigate(['/login']);
     });

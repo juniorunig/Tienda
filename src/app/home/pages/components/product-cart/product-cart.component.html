@@ -13,7 +13,7 @@
       ><br />
       <span class="gris txt-short">Cant: {{ this.product.cantida }}</span>
     </li>
-    <li class="col-3 align-item-center">
+    <li *ngIf="DesactivarDelte == true" class="col-3 align-item-center">
       <button class="btn btn-danger pt-2" (click)="eliminarProduct()">
         quitar
       </button>

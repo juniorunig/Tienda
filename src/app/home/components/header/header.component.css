@@ -148,6 +148,7 @@ a {
   .nav__list {
     max-width: 340px;
     margin: 0;
+    column-gap: 5px;
   }
 
   .cart {

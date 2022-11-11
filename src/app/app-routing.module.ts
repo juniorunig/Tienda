@@ -8,13 +8,13 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [PermisosGuard],
+    // canActivate: [PermisosGuard],
   },
   {
     path: '',
@@ -24,7 +24,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
-    canActivate: [PermisosGuard],
+    // canActivate: [PermisosGuard],
   },
   {
     path: '**',
