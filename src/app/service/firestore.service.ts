@@ -6,6 +6,7 @@ import { collectionData, Firestore, updateDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { CategoriaI } from '../core/models/categoria';
 import { ProductoI } from '../core/models/producto';
+import { compraI } from '../core/models/compra';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +15,7 @@ export class FirestoreService {
   pathUser = 'users';
   pathCategories = 'categories';
   pathProducts = 'products';
+  pathCompras = 'compras';
   constructor(private firestore: AngularFirestore, private fire: Firestore) {}
 
   savesUser(user: UserI) {
@@ -86,7 +88,7 @@ export class FirestoreService {
     return null;
   }
 
-  Save(product?: ProductoI, categoria?: CategoriaI) {
+  Save(product?: ProductoI, categoria?: CategoriaI, compra?: compraI) {
     if (product?.id !== undefined && product !== null) {
       this.createDoc(product, this.pathProducts, product?.id)
         .then((inf) => {
@@ -117,5 +119,17 @@ export class FirestoreService {
     }
 
     return existe;
+  }
+
+  SaveCompras(compra?: compraI) {
+    if (compra?.id !== undefined && compra !== null) {
+      this.createDoc(compra, this.pathCompras, compra?.id)
+        .then((inf) => {
+          console.log('todo correcto desde el fireservice  con la compra');
+        })
+        .catch((error) => {
+          console.log('fire service : error de saveProduct');
+        });
+    }
   }
 }

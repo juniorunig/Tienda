@@ -4,54 +4,19 @@
   margin: 0;
   padding: 0;
   text-align: center;
-  color: black;
   font-size: small;
+  text-align: center;
 }
 
-/* .card-product {
-  width: 300px;
-  height: 90px;
-  background-color: bisque;
-  border-radius: 15px;
-  align-content: center;
+.card-item {
+  width: 140px;
+  max-width: 140px;
 }
 
-.card-link {
-  display: flex;
-  justify-content: space-around;
-  height: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  align-items: center;
-}
-.card-perfil,
-.card-img {
-  height: 40px;
-  background-color: coral;
-  border-radius: 10px;
-}
-
-.card-perfil {
-  margin-left: 10px;
-}
-
-.card-detalles {
-  display: flex;
-  flex-direction: column;
-}
-
-.card-text {
-  margin: 5px;
-}
-
-.card-btn {
-  height: 50px;
-  width: 50px;
-}
-
+/* 
 img.btn-add:hover {
   background-color: blueviolet;
-} */
+}
 
 @media screen and (max-width: 415px) {
   .card-product {
@@ -105,4 +70,4 @@ img.btn-add:hover {
     width: 70%;
     margin: 10px;
   }
-}
+} */

@@ -2,19 +2,17 @@
   [title]="this.ListName"
   (toCategories)="toCategories()"
 ></app-head-buscar>
-<div class="container-list">
-  <div
-    *ngIf="this.ListName === 'Categorias'; else closed"
-    class="container-list"
-  >
-    <app-catg-categori
-      *ngFor="let categoria of categorias"
-      [categoria]="categoria"
-      (actualizar)="actualizar($event)"
-    ></app-catg-categori>
-  </div>
-  <ng-template #closed>
+<div *ngIf="this.ListName === 'Categorias'; else closed" class="container-list">
+  <app-catg-categori
+    *ngFor="let categoria of categorias"
+    [categoria]="categoria"
+    (actualizar)="actualizar($event)"
+  ></app-catg-categori>
+</div>
+<!-- justify-content-evenly -->
+<ng-template #closed class="container-list d-flex">
+  <div class="container-list d-flex">
     <app-catg-item *ngFor="let producto of productos" [producto]="producto">
     </app-catg-item>
-  </ng-template>
-</div>
+  </div>
+</ng-template>

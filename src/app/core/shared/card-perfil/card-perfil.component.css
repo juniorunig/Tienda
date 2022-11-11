@@ -14,12 +14,14 @@ a {
 
 .sub-menu-container-open {
   max-height: 400px;
+  border: 0.5px solid #ccc;
+  box-shadow: 0 0 12px rgba(59, 59, 59, 0.25);
 }
 
 .sub-menu {
   background-color: #fff;
   padding: 20px;
-  margin: 10px;
+  /* margin: 10px; */
 }
 
 .user-info {
@@ -53,4 +55,18 @@ a {
   text-align: center;
   width: 100%;
   font-size: 13px;
+}
+
+@media screen and (max-width: 1200px) {
+  .sub-menu-container {
+    right: 10%;
+  }
+}
+@media screen and (max-width: 766px) {
+  .none {
+    display: none;
+  }
+  .sub-menu-container {
+    right: 5%;
+  }
 }

@@ -10,7 +10,9 @@ export class PedidosCardComponent implements OnInit {
   estados: string[] = ['btn btn-warning', 'btn btn-success', 'btn btn-danger'];
 
   @Input() compra: compraI = {};
-  constructor() {}
+  constructor() {
+    console.log(this.compra);
+  }
 
   ngOnInit(): void {}
 }

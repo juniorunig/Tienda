@@ -1,0 +1,17 @@
+@media screen and (max-width: 720px) {
+  .coll-1 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .coll-2 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .coll-3 {
+    display: none;
+  }
+}

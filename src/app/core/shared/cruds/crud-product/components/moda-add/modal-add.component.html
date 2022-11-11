@@ -34,13 +34,24 @@
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">categoria</label>
-            <input
+            <!-- <input
               type="text"
               formControlName="categoria"
               class="form-control"
               id="categoria"
               aria-describedby="emailHelp"
-            />
+            /> -->
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              formControlName="categoria"
+              id="categoria"
+            >
+              <option selected>categorias</option>
+              <option *ngFor="let categoria of categorias">
+                {{ categoria }}
+              </option>
+            </select>
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">precio</label>

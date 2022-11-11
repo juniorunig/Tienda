@@ -19,5 +19,6 @@ export class CatgItemComponent implements OnInit {
 
   addProduct() {
     this.shoping.addProduct(this.producto);
+    this.shoping.sumarPrecio;
   }
 }

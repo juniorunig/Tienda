@@ -1,4 +1,4 @@
-<div class="container bg-white shadow-lg">
+<div class="container bg-white shadow-lg rounded">
   <h2>COMPRAS</h2>
   <hr />
   <app-product-cart
@@ -6,5 +6,18 @@
     [product]="item"
     (Eliminar)="EliminarProduct($event)"
   ></app-product-cart>
-  <div>-----</div>
+  <div *ngIf="this.producst.length == 0" class="mb-5">NO HAY PRODUCTOS AUN</div>
+  <div class="container">
+    <div class="container">
+      <span class="float-end fw-bold mb-1 mt-3"
+        >TOTAL: $ {{ precioTotatl() }}</span
+      >
+    </div>
+    <button
+      class="btn rounded btn-primary col-12 mb-3 fw-bold"
+      (click)="saveCompras()"
+    >
+      comprar
+    </button>
+  </div>
 </div>

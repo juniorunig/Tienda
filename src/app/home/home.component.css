@@ -1,5 +1,13 @@
 .content {
-  margin-top: 5rem;
+  /* margin: 5rem 0 0 0; */
+  padding-top: 4rem;
   background-color: rgb(240, 239, 255);
   height: 98vh;
+}
+
+/* 765 */
+@media screen and (min-width: 768px) {
+  .content {
+    margin-top: 2rem;
+  }
 }

@@ -1,6 +1,6 @@
 export interface CategoriaI {
   id?: string;
   nombre?: string;
-  imgUrl?: string;
+  imgURL?: string;
   cantidad?: number;
 }

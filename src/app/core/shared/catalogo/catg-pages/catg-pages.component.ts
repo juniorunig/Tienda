@@ -12,33 +12,7 @@ import { FirestoreService } from 'src/app/service/firestore.service';
 export class CatgPagesComponent implements OnInit {
   ListName = 'Categorias';
 
-  productos: ProductoI[] = [
-    // {
-    //   nombre: 'producto',
-    //   precio: 0.0,
-    //   unidad: 'libra',
-    // },
-    // {
-    //   nombre: 'producto',
-    //   precio: 0.0,
-    //   unidad: 'libra',
-    // },
-    // {
-    //   nombre: 'producto',
-    //   precio: 0.0,
-    //   unidad: 'libra',
-    // },
-    // {
-    //   nombre: 'producto',
-    //   precio: 0.0,
-    //   unidad: 'libra',
-    // },
-    // {
-    //   nombre: 'producto',
-    //   precio: 0.0,
-    //   unidad: 'libra',
-    // },
-  ];
+  productos: ProductoI[] = [];
 
   categorias: CategoriaI[] = [];
 
@@ -68,7 +42,6 @@ export class CatgPagesComponent implements OnInit {
     this.firestore.getAllCategories().subscribe((res) => {
       res.forEach((categoria) => {
         if (categoria) {
-          categoria.imgUrl = 'bx bxs-baguette bx-lg';
           this.categorias.push(categoria);
         }
       });

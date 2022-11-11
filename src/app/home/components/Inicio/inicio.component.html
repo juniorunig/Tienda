@@ -1,4 +1,8 @@
-<app-pedidos-card
-  *ngFor="let compra of compras"
-  [compra]="compra"
-></app-pedidos-card>
+<div class="container bg-white">
+  <h2>NUEVAS COMPRAS</h2>
+  <app-pedidos-card
+    *ngFor="let compra of compras"
+    [compra]="compra"
+  ></app-pedidos-card>
+  <hr />
+</div>

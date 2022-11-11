@@ -1,0 +1,16 @@
+export enum CategoriasEnum {
+  Enlatados = 'Enlatados',
+  Lacteos = 'Lacteos',
+  Botanas = 'Botanas',
+  Dulces = 'Dulces',
+  Frutas = 'Frutas',
+  Verduras = 'Verduras',
+  Bebidas = 'Bebidas',
+  Embutidos = 'Embutidos',
+  Medicamentos = 'Medicamentos',
+  Higiene_Personal = 'Higuiene personal',
+  Uso_Domestio = 'Uso domestico',
+  Carnes = 'Carnes',
+  Condimentos = 'Condimentos',
+  Abarrotes = 'Abarrotes',
+}

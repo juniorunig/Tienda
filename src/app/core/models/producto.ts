@@ -8,4 +8,5 @@ export interface ProductoI {
   unidad?: string;
   marca?: string;
   numeroCompras?: number;
+  cantida?: number;
 }

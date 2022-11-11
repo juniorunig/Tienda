@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CategoriasEnum } from 'src/app/core/models/enums/categorias';
 import { ProductoI } from 'src/app/core/models/producto';
 import { FirestoreService } from 'src/app/service/firestore.service';
 
@@ -12,6 +13,8 @@ import { FirestoreService } from 'src/app/service/firestore.service';
 export class ModalAddComponent implements OnInit {
   formAdd: FormGroup;
   productAdd: ProductoI = {};
+  categorias: string[] = [];
+
   constructor(
     private fb: FormBuilder,
     private firestore: FirestoreService,
@@ -24,6 +27,7 @@ export class ModalAddComponent implements OnInit {
       unidad: ['', Validators.required],
       marca: ['', Validators.required],
     });
+    this.getCategories();
   }
 
   ngOnInit(): void {}
@@ -40,5 +44,12 @@ export class ModalAddComponent implements OnInit {
   registrar() {
     this.getvalues();
     this.firestore.Save(this.productAdd);
+  }
+
+  getCategories() {
+    let tipos = Object.values(CategoriasEnum);
+    tipos.forEach((ele) => {
+      this.categorias.push(ele);
+    });
   }
 }

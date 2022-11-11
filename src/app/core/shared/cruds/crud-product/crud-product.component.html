@@ -1,6 +1,6 @@
-<div class="container-fluid bg-light rounded-2">
+<div class="container bg-white rounded-2">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
+    <div class="container">
       <a class="navbar-brand fw-bold" href="#"
         >Sistema de gestion de productos</a
       >
@@ -17,7 +17,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <button
-          class="btn btn-success"
+          class="btn btn-success float-end my-2"
           data-bs-toggle="modal"
           data-bs-target="#addEmployee"
           type="submit"
@@ -28,26 +28,32 @@
     </div>
   </nav>
 
-  <table class="table table-hover">
+  <table class="table">
     <thead>
       <tr>
-        <th scope="col" *ngFor="let cabecera of CABECERAS_PRODUCTS">
+        <!-- <th scope="col" *ngFor="let cabecera of CABECERAS_PRODUCTS">
           {{ cabecera }}
-        </th>
+        </th> -->
+        <th class="col">{{ this.CABECERAS_PRODUCTS[0] }}</th>
+        <th class="col">{{ this.CABECERAS_PRODUCTS[4] }}</th>
+        <th class="col coll-3">{{ this.CABECERAS_PRODUCTS[2] }}</th>
+        <th class="col coll-2">{{ this.CABECERAS_PRODUCTS[3] }}</th>
+        <th class="col coll-1">{{ this.CABECERAS_PRODUCTS[1] }}</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of products">
         <td>{{ item.nombre }}</td>
-        <td>{{ item.categoria }}</td>
-        <td>{{ item.precio }}</td>
-        <td>{{ item.unidad }}</td>
         <td>{{ item.marca }}</td>
+        <td class="coll-3">{{ item.precio }}</td>
+        <td class="coll-2">{{ item.unidad }}</td>
+        <td class="coll-1">{{ item.categoria }}</td>
         <td>
           <button
             type="button"
-            class="btn btn-primary me-2"
+            class="btn btn-primary"
+            style="width: 84px"
             data-bs-toggle="modal"
             data-bs-target="#editEmployee"
             (click)="updateProdect(item)"
@@ -57,6 +63,7 @@
           </button>
           <button
             type="button"
+            style="width: 84px"
             class="btn btn-danger"
             (click)="DeleteProduct(item)"
           >

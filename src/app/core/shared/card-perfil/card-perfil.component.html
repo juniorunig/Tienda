@@ -1,6 +1,6 @@
-<div class="container-fluid">
+<div class="container">
   <a class="container-fluid d-flex" (click)="toogleMenu()">
-    <p class="container-fluid mb-0 pt-2 text-center">{{ user.name }}</p>
+    <p class="container mb-0 pt-2 text-center none">{{ user.name }}</p>
     <a class="navbar-brand">
       <img
         *ngIf="user.photoUrl"
@@ -14,7 +14,7 @@
   </a>
 </div>
 
-<div class="sub-menu-container" *ngIf="true" id="subMenu">
+<div class="sub-menu-container rounded" *ngIf="true" id="subMenu">
   <div class="sub-menu">
     <div class="user-info">
       <img

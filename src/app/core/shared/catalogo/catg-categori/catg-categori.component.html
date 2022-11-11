@@ -1,9 +1,17 @@
-<div class="card-category">
-  <a routerLink="#" class="card-link" (click)="goToProducts()">
-    <div class="card-text">{{ this.categoria.nombre }}</div>
-    <div class="card-img">
-      <i class="{{ this.categoria.imgUrl }}"></i>
-      <!-- <img src="" alt="" /> -->
-    </div>
-  </a>
-</div>
+<button
+  class="btn btn-white card-category d-flex align-items-center"
+  (click)="goToProducts()"
+>
+  <div class="card-text float-start">{{ this.categoria.nombre }}</div>
+  <div class="card-img float-end">
+    <!-- <i class="{{ this.categoria.imgUrl }} float-end"></i> -->
+    <img
+      src="/assets/icons/{{ this.categoria.imgURL }}"
+      alt=""
+      class="float-end"
+      style="height: 50px"
+    />
+  </div>
+  <!-- <a routerLink="#" class="card-link" (click)="goToProducts()">
+  </a> -->
+</button>

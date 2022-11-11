@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap");
+
 * {
   text-decoration: none;
   color: black;
+  font-family: "poppins", sans-serif;
 }
 .card-category {
   width: 165px;
@@ -24,4 +27,17 @@
 
 .card-category:hover {
   background-color: aqua;
+}
+
+@media screen and (min-width: 675px) {
+  .card-category {
+    width: 300px;
+  }
+}
+
+@media screen and (min-width: 360px) {
+  .card-category {
+    width: 250px;
+    font-size: small;
+  }
 }
