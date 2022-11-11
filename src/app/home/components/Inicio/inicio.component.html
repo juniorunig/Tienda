@@ -5,4 +5,10 @@
     [compra]="compra"
   ></app-pedidos-card>
   <hr />
+  <h2>COMPRAS ANTIGUAS</h2>
+  <app-pedidos-card
+    *ngFor="let compra of comprasAntiguas"
+    [compra]="compra"
+  ></app-pedidos-card>
+  <hr />
 </div>

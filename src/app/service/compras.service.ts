@@ -13,7 +13,7 @@ export class ComprasService {
     if (compra) {
       compra.id = this.fire.GenerarId();
       this.compras.push(compra);
-      // this.fire.SaveCompras(compra);
+      this.fire.SaveCompras(compra);
     }
   }
 

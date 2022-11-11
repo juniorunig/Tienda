@@ -132,4 +132,9 @@ export class FirestoreService {
         });
     }
   }
+
+  getAllCompras(): Observable<compraI[]> {
+    const UserRef = collection(this.fire, this.pathCompras);
+    return collectionData(UserRef, { idField: 'id' }) as Observable<compraI[]>;
+  }
 }
