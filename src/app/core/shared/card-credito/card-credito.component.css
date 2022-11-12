@@ -3,18 +3,40 @@
 * {
   font-family: "poppins", sans-serif;
 }
-
+p {
+  margin: 0;
+  padding: 0;
+}
+.cart {
+  height: 80px;
+  max-height: 80px;
+}
+.bt {
+  width: 112px;
+  max-width: 122px;
+  height: 38.5px;
+  align-content: center;
+  margin-top: 15px;
+  padding: 8px;
+}
 @media screen and (max-width: 500px) {
   .none {
     display: none;
   }
-
+  .bt {
+    margin-top: 20px;
+    width: 85px;
+    font-size: 11px;
+    margin-right: 5px;
+  }
   .mw {
     max-width: 90px;
-    font-size: 12px;
+    font-size: 11px;
+    margin-top: 20px;
   }
-  img {
-    height: 30px;
-    width: 30px;
+  .precio {
+    font-size: 11px;
+    margin-top: 27px;
+    margin-bottom: 0;
   }
 }

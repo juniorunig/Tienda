@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserI } from '../core/models/user';
 import { AuthService } from '../service/auth.service';
 import { FirestoreService } from '../service/firestore.service';
@@ -11,15 +12,23 @@ import { TiendaComponent } from './components/tienda/tienda.component';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private auth: AuthService, private firestore: FirestoreService) {}
+  constructor(
+    private auth: AuthService,
+    private firestore: FirestoreService,
+    private userService: UserService,
+    private Router: Router
+  ) {}
 
   ngOnInit(): void {
     this.SaveUser();
+    this.Router.navigate(['inicio']);
   }
 
+  ngDoChange() {
+    this.userService.getRol;
+  }
   SaveUser() {
     const usuario: UserI = {};
-
     this.auth.getStateUser().subscribe((us) => {
       if (us !== null) {
         usuario.id = us.uid!;

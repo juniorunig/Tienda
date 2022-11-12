@@ -27,7 +27,6 @@
   padding: 13px;
   text-align: center;
   border-radius: 20px;
-  background-color: antiquewhite;
 }
 
 .card-detalles {
@@ -51,8 +50,20 @@
   padding: 13px 0 0 0;
 }
 
+.bt {
+  width: 110px;
+  max-width: 110px;
+}
 @media screen and (max-width: 410px) {
   .txt-short {
     font-size: 10px;
+  }
+  .bt {
+    width: 70px;
+    max-width: 70px;
+    font-size: 10px;
+  }
+  .tx {
+    padding-right: 10px;
   }
 }

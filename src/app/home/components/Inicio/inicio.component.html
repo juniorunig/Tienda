@@ -1,4 +1,4 @@
-<div class="container bg-white">
+<div class="container bg-white inicio">
   <h2>NUEVAS COMPRAS</h2>
   <app-pedidos-card
     *ngFor="let compra of compras"
@@ -9,6 +9,7 @@
   <app-pedidos-card
     *ngFor="let compra of comprasAntiguas"
     [compra]="compra"
+    class="mb-2"
   ></app-pedidos-card>
   <hr />
 </div>

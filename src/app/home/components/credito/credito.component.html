@@ -1,10 +1,11 @@
-<div class="container bg-white rounded shadow-sm p-0">
-  <h3 class="text-center fw-bold">SISTEMA DE CREDITOS</h3>
+<div class="container bg-white rounded shadow-sm">
+  <h3 class="text-center fw-bold py-2">SISTEMA DE CREDITOS</h3>
   <hr />
-  <div class="container">
+  <div class="container c">
     <app-card-credito
       *ngFor="let compra of COMPRAS"
       [compra]="compra"
+      class="c"
     ></app-card-credito>
   </div>
 </div>

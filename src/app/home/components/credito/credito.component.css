@@ -3,3 +3,9 @@
 * {
   font-family: "poppins", sans-serif;
 }
+
+@media screen and (max-width: 770px) {
+  .c {
+    padding-bottom: 120px;
+  }
+}

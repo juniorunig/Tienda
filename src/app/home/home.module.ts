@@ -22,6 +22,7 @@ import { ComprasModule } from './pages/compras/compras.module';
 import { ComprasComponent } from './pages/compras/compras.component';
 import { ProductCartComponent } from './pages/components/product-cart/product-cart.component';
 import { CardCreditoModule } from '../core/shared/card-credito/card-credito.module';
+import { PermisosGuard } from '../guard/permisos.guard';
 
 const routes: Routes = [
   {
@@ -35,18 +36,22 @@ const routes: Routes = [
       {
         path: 'productos',
         component: ProductoComponent,
+        canActivate: [PermisosGuard],
       },
       {
         path: 'credito',
         component: CreditoComponent,
+        canActivate: [PermisosGuard],
       },
       {
         path: 'tienda',
         component: TiendaComponent,
+        canActivate: [PermisosGuard],
       },
       {
         path: 'tienda/compras',
         component: ComprasComponent,
+        canActivate: [PermisosGuard],
       },
     ],
   },

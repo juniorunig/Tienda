@@ -3,6 +3,7 @@ import { tiendaI } from 'src/app/core/models/tienda';
 import { UserI } from 'src/app/core/models/user';
 import { AuthService } from 'src/app/service/auth.service';
 import { FirestoreService } from 'src/app/service/firestore.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-tienda',
@@ -26,31 +27,14 @@ export class TiendaComponent implements OnInit {
     },
   ];
 
-  constructor(private firestore: FirestoreService, private auth: AuthService) {
-    this.auth.getStateUser().subscribe((res) => {
-      if (res) {
-        this.getDatosUser(res.uid);
-      }
-    });
+  constructor(
+    private firestore: FirestoreService,
+    private auth: AuthService,
+    private userService: UserService
+  ) {
+    this.PERMISO = this.userService.getRol;
+    console.log(this.PERMISO + ' desde tienda');
   }
 
   ngOnInit(): void {}
-
-  getDatosUser(uid: string) {
-    const PATH = 'users';
-    const id = uid;
-
-    this.firestore.getOne<UserI>(PATH, id).then((res) => {
-      console.log(id);
-
-      res.subscribe((user) => {
-        if (user) {
-          if (user?.Rol === 'user' || user.Rol === 'admin') {
-            console.log(user.Rol);
-            this.PERMISO = user.Rol;
-          }
-        }
-      });
-    });
-  }
 }

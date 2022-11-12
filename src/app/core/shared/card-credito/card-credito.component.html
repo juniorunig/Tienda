@@ -1,39 +1,39 @@
 <a
-  class="btn btn-white col-12 d-flex p-0 my-4 shadow"
+  class="btn btn-white col-12 d-flex p-0 my-4 border shadow-sm"
   style="border: 0.2px grey"
   type="button"
   (click)="configurando()"
 >
-  <div class="card-body float-start">
-    <img [src]="this.PERFIL_IMG" alt="" />
-  </div>
-  <div class="card-body">
-    <span class="mw text-wrap">{{ this.compra.name_user }}</span
-    ><br />
-    <span class="none">{{ this.compra.fecha }}</span>
-  </div>
-  <div class="card-body">
-    <span>${{ this.compra.valor }}</span
-    ><br />
-    <span class="none">{{ this.compra.tipo }}</span>
-  </div>
-  <div class="card-body">
-    <span
-      *ngIf="this.compra.estado == 'pendiente'"
-      class="btn btn-warning mw mt-2"
-      >{{ this.compra.estado }}</span
-    >
-    <span
-      *ngIf="this.compra.estado == 'hecho'"
-      class="btn btn-success mw mt-2"
-      >{{ this.compra.estado }}</span
-    >
-    <span
-      *ngIf="this.compra.estado == 'cancelado'"
-      class="btn btn-danger mw mt-2"
-      >{{ this.compra.estado }}</span
-    >
-  </div>
+  <ul class="container d-flex text-center p-0 m-0 cart">
+    <div class="col">
+      <img [src]="this.PERFIL_IMG" alt="" />
+    </div>
+    <li class="col text-wrap">
+      <div class="mw text-wrap">{{ this.compra.name_user }}</div>
+      <br />
+      <span class="none">{{ this.compra.fecha }}</span>
+    </li>
+    <li class="col">
+      <p class="precio">${{ this.compra.valor }}</p>
+      <br />
+      <span class="none">{{ this.compra.tipo }}</span>
+    </li>
+    <li class="col align-items-center">
+      <span
+        *ngIf="this.compra.estado == 'pendiente'"
+        class="btn btn-warning bt"
+        >{{ this.compra.estado }}</span
+      >
+      <span *ngIf="this.compra.estado == 'hecho'" class="btn btn-success bt">{{
+        this.compra.estado
+      }}</span>
+      <span
+        *ngIf="this.compra.estado == 'cancelado'"
+        class="btn btn-danger bt"
+        >{{ this.compra.estado }}</span
+      >
+    </li>
+  </ul>
 </a>
 
 <div class="collapse" [id]="CODE_TABLA">
@@ -48,7 +48,7 @@
       </button>
     </div>
   </div>
-  <div class="card card-body">
+  <div *ngIf="this.compra.productos?.length! > 0" class="card card-body">
     <h3>RESUMEN DE COMPRA</h3>
     <app-product-cart
       *ngFor="let producto of this.compra.productos"

@@ -11,12 +11,7 @@ export class UserService {
   private USUARIO_ACTUAL: UserI = {};
 
   constructor(private auth: AuthService, private Fire: FirestoreService) {
-    this.auth.getStateUser().subscribe((user) => {
-      console.log('opteniendo datos del usuario');
-      if (user) {
-        this.getDatosUser(user.uid);
-      }
-    });
+    this.getDatosUser;
   }
 
   private getDatosUser(uid: string) {
@@ -54,7 +49,23 @@ export class UserService {
     return this.USUARIO_ACTUAL.name!;
   }
 
-  setUser() {
+  set setUser(rol: string) {
     this.USUARIO_ACTUAL = {};
+    this.USUARIO_ACTUAL.Rol = 'user';
+    console.log('valor setiado');
+    console.log(this.USUARIO_ACTUAL.Rol);
+  }
+
+  get CargarDatos(): boolean {
+    this.auth.getStateUser().subscribe((user) => {
+      if (user?.uid !== undefined) {
+        console.log('opteniendo datos del usuario');
+        this.getDatosUser(user!.uid);
+        return true;
+      } else {
+        return false;
+      }
+    });
+    return false;
   }
 }

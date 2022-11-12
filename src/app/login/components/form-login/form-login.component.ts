@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { UserI } from 'src/app/core/models/user';
 import { AuthService } from 'src/app/service/auth.service';
 import { FirestoreService } from 'src/app/service/firestore.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-form-login',
@@ -23,7 +24,8 @@ export class FormLoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {
     this.login = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -35,6 +37,11 @@ export class FormLoginComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  ngDoChange() {
+    this.userService.CargarDatos;
+    this.userService.getRol;
+  }
 
   // login normal correo y contraseña
   Login() {
@@ -53,6 +60,7 @@ export class FormLoginComponent implements OnInit {
   // login con google
   async LoginWithGoogle() {
     await this.auth.googleAuth().then((user) => {
+      this.userService.CargarDatos;
       this.router.navigate(['/home']);
     });
   }

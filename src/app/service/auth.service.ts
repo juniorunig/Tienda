@@ -46,18 +46,18 @@ export class AuthService {
     });
   }
 
+  // INFORMACION DEL USURIO LOGEADO
   getStateUser() {
     return this.auth.authState;
   }
 
-  getUid() {
+  get getUid() {
     let id;
     this.getStateUser().subscribe((res) => {
       id = res?.uid;
       return id;
     });
     if (id) {
-      console.log(+'+++++++');
       return id;
     }
     console.log('el Uid no esta disponible -- archivo authservice');

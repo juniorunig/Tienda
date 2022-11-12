@@ -22,10 +22,17 @@ export class InicioComponent implements OnInit {
     }
 
     this.getComprasAntiguas();
+    // this.user.CargarDatos;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.user.CargarDatos;
+  }
 
+  ngDoChange() {
+    this.user.getRol;
+    this.user.CargarDatos;
+  }
   getComprasAntiguas() {
     this.fire.getAllCompras().subscribe((compras) => {
       if (compras) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { ReCaptchaEnterpriseProvider } from 'firebase/app-check';
 import { UserService } from 'src/app/service/user.service';
 
@@ -11,8 +11,11 @@ export class HeaderComponent implements OnInit {
   ROL_USER = 'user';
   constructor(private user: UserService) {
     this.ROL_USER = this.user.getRol;
-    console.log(this.ROL_USER + '----');
   }
 
   ngOnInit(): void {}
+
+  ngDoCheck(): void {
+    this.ROL_USER = this.user.getRol;
+  }
 }

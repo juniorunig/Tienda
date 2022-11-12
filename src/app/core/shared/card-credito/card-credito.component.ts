@@ -30,6 +30,9 @@ export class CardCreditoComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+  ngonChanges(): void {
+    this.compra;
+  }
 
   getRandomCode(min: number, max: number): number {
     min = Math.ceil(min);

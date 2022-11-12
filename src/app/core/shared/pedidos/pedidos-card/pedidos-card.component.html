@@ -1,31 +1,31 @@
-<div class="container-card shadow-sm">
-  <div class="card-element">
-    <div class="card-icon">
+<div class="container border shadow-sm text-center p-0 mb-2">
+  <div class="container d-flex align-items-center">
+    <div class="col">
       <i class="bx bxs-shopping-bag-alt bx-md"></i>
     </div>
-    <div class="card-detalles">
-      <div class="detalle">
-        <span>{{ this.compra.tipo }}</span>
-        <span class="gris txt-short">{{ this.compra.fecha }}</span>
-      </div>
-      <div class="detalle centrado">
-        <span>${{ this.compra.valor }}</span>
-      </div>
-      <div class="detalle pt-1">
-        <span
-          *ngIf="this.compra.estado == 'pendiente'"
-          class="btn btn-warning"
-          >{{ this.compra.estado }}</span
-        >
-        <span *ngIf="this.compra.estado == 'hecho'" class="btn btn-success">{{
-          this.compra.estado
-        }}</span>
-        <span
-          *ngIf="this.compra.estado == 'cancelado'"
-          class="btn btn-danger"
-          >{{ this.compra.estado }}</span
-        >
-      </div>
+    <div class="col flex-column">
+      <div class="p-1">{{ this.compra.tipo }}</div>
+      <div class="p-2 gris txt-short">{{ this.compra.fecha }}</div>
+    </div>
+    <div class="col">
+      <span>${{ this.compra.valor }}</span>
+    </div>
+    <div class="col bt">
+      <span
+        *ngIf="this.compra.estado == 'pendiente'"
+        class="btn btn-warning bt tx"
+        >{{ this.compra.estado }}</span
+      >
+      <span
+        *ngIf="this.compra.estado == 'hecho'"
+        class="btn btn-success bt tx"
+        >{{ this.compra.estado }}</span
+      >
+      <span
+        *ngIf="this.compra.estado == 'cancelado'"
+        class="btn btn-danger bt tx"
+        >{{ this.compra.estado }}</span
+      >
     </div>
   </div>
 </div>
