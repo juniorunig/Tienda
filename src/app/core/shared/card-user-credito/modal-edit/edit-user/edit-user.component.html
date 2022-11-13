@@ -1,0 +1,86 @@
+<div
+  class="modal fade"
+  id="editEmployee"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">EDITAR PRODUCTOS</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formUser">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Direccion</label>
+            <input
+              type="text"
+              formControlName="address"
+              class="form-control"
+              [value]="this.user.address"
+              id="address"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Telefono</label>
+            <input
+              type="text"
+              formControlName="numberPhone"
+              class="form-control"
+              [value]="this.user.numberPhone"
+              id="numberPhone"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">credito</label>
+            <input
+              type="number"
+              formControlName="credito"
+              class="form-control"
+              [value]="this.user.credito"
+              id="credito"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <!-- <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">permido</label>
+            <input
+              type="number"
+              formControlName="permiso"
+              class="form-control"
+              id="permiso"
+              aria-describedby="emailHelp"
+            />
+          </div> -->
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-success"
+              data-bs-dismiss="modal"
+              (click)="updateProducto()"
+            >
+              actulizar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -36,11 +36,8 @@ export class FormLoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
-
-  ngDoChange() {
+  ngOnInit(): void {
     this.userService.CargarDatos;
-    this.userService.getRol;
   }
 
   // login normal correo y contraseña
@@ -60,7 +57,7 @@ export class FormLoginComponent implements OnInit {
   // login con google
   async LoginWithGoogle() {
     await this.auth.googleAuth().then((user) => {
-      this.userService.CargarDatos;
+      this.userService.setUser;
       this.router.navigate(['/home']);
     });
   }

@@ -8,12 +8,14 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  ROL_USER = 'user';
+  ROL_USER = '';
   constructor(private user: UserService) {
     this.ROL_USER = this.user.getRol;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this.ROL_USER = this.user.getRol;
+  }
 
   ngDoCheck(): void {
     this.ROL_USER = this.user.getRol;

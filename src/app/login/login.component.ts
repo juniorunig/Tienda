@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor() {}
+  constructor() {
+    console.log('¡version 2.0');
+  }
 
   ngOnInit(): void {}
 }

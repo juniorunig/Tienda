@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { GoogleAuthProvider, User } from '@firebase/auth';
+import { map } from 'rxjs';
 
 import { UserI } from '../core/models/user';
 import { UserService } from './user.service';
@@ -67,4 +68,11 @@ export class AuthService {
   get getCurrentUser() {
     return this.auth.currentUser;
   }
+
+  // userRol() {
+  //   let rol = 'user' || 'admin';
+  //   this.auth.authState.pipe(
+  //     map(user=> Boolean(user && rol.includes(user.role)))
+  //   )
+  // }
 }

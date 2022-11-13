@@ -1,11 +1,45 @@
 <div class="container bg-white rounded shadow-sm">
+  <div class="container d-flex justify-content-center py-2">
+    <div
+      class="card btn d-flex border width mx-2"
+      (click)="this.OPCION_CAMBIO = false"
+    >
+      <div class="card-top-img">
+        <img src="/assets/icons/user.png" alt="" />
+      </div>
+      <div class="card-body">
+        <h4 class="font">USURIOS</h4>
+      </div>
+    </div>
+    <div
+      class="card btn d-flex border width mx-2"
+      (click)="this.OPCION_CAMBIO = true"
+    >
+      <div class="card-top-img">
+        <img
+          src="/assets/icons/credit.svg"
+          alt=""
+          style="max-width: 64px; max-height: 64x"
+        />
+      </div>
+      <div class="card-body">
+        <h4 class="font">CREDITO</h4>
+      </div>
+    </div>
+  </div>
   <h3 class="text-center fw-bold py-2">SISTEMA DE CREDITOS</h3>
   <hr />
-  <div class="container c">
+
+  <div class="container c" *ngIf="OPCION_CAMBIO; else Cerrar">
     <app-card-credito
       *ngFor="let compra of COMPRAS"
       [compra]="compra"
       class="c"
+      (actulizar)="this.aculizar()"
     ></app-card-credito>
   </div>
+
+  <ng-template #Cerrar>
+    <app-card-user *ngFor="let user of USUARIOS" [user]="user"></app-card-user>
+  </ng-template>
 </div>

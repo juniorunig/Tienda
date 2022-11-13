@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { compraI } from 'src/app/core/models/compra';
 import { ComprasService } from 'src/app/service/compras.service';
 import { FirestoreService } from 'src/app/service/firestore.service';
@@ -22,17 +22,16 @@ export class InicioComponent implements OnInit {
     }
 
     this.getComprasAntiguas();
-    // this.user.CargarDatos;
+    this.user.CargarDatos;
   }
 
   ngOnInit(): void {
-    this.user.CargarDatos;
+    console.log('VERSION DE LA APP 4.0');
   }
 
-  ngDoChange() {
-    this.user.getRol;
-    this.user.CargarDatos;
-  }
+  // ngDoCheck() {
+  //   this.user.CargarDatos;
+  // }
   getComprasAntiguas() {
     this.fire.getAllCompras().subscribe((compras) => {
       if (compras) {

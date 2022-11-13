@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { tiendaI } from 'src/app/core/models/tienda';
 import { UserI } from 'src/app/core/models/user';
-import { AuthService } from 'src/app/service/auth.service';
-import { FirestoreService } from 'src/app/service/firestore.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -27,11 +25,7 @@ export class TiendaComponent implements OnInit {
     },
   ];
 
-  constructor(
-    private firestore: FirestoreService,
-    private auth: AuthService,
-    private userService: UserService
-  ) {
+  constructor(private userService: UserService) {
     this.PERMISO = this.userService.getRol;
     console.log(this.PERMISO + ' desde tienda');
   }

@@ -4,6 +4,7 @@ import { compraI } from 'src/app/core/models/compra';
 import { ProductoI } from 'src/app/core/models/producto';
 import { AuthService } from 'src/app/service/auth.service';
 import { ComprasService } from 'src/app/service/compras.service';
+import { NotificacionesService } from 'src/app/service/notificaciones.service';
 import { ShopingCartService } from 'src/app/service/shoping-cart.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -17,10 +18,14 @@ export class ComprasComponent implements OnInit {
   compra: compraI = {};
   TIPO_COMPRAS = 'credito';
   ESTADO_COMPRAS = 'pendiente';
+  MESSAGE_COMPRA_ERROR = 'El carrito de compra esta vacio!!';
+  MESSAGE_COMPRA_SUCESS = 'Compra realizada con exito';
+  MESSAGE_ERROR_CREDITO = 'No tienes el credito suficiente';
   constructor(
     private shooping: ShopingCartService,
     private compras: ComprasService,
-    private userActual: UserService
+    private userActual: UserService,
+    private notify: NotificacionesService
   ) {
     this.producst = this.shooping.products;
   }
@@ -49,6 +54,16 @@ export class ComprasComponent implements OnInit {
   }
 
   saveCompras() {
+    if (this.producst.length < 1) {
+      this.notify.showError(this.MESSAGE_COMPRA_ERROR);
+      return;
+    }
+    if (this.userActual.getCredito! < this.precioTotatl()) {
+      this.notify.showWarnning(this.MESSAGE_ERROR_CREDITO);
+      return;
+    }
+    console.log('paso');
+
     if (this.producst.length !== undefined) {
       this.compra.productos = this.producst;
       this.compra.tipo = this.TIPO_COMPRAS;
@@ -60,6 +75,7 @@ export class ComprasComponent implements OnInit {
       console.log(this.compra);
       this.compras.SaveCompras(this.compra);
       this.shooping.vaciar();
+      this.notify.showSuccess(this.MESSAGE_COMPRA_SUCESS);
     }
   }
 }

@@ -23,6 +23,7 @@ import { ComprasComponent } from './pages/compras/compras.component';
 import { ProductCartComponent } from './pages/components/product-cart/product-cart.component';
 import { CardCreditoModule } from '../core/shared/card-credito/card-credito.module';
 import { PermisosGuard } from '../guard/permisos.guard';
+import { CardUserModule } from '../core/shared/card-user-credito/card-user.module';
 
 const routes: Routes = [
   {
@@ -41,7 +42,7 @@ const routes: Routes = [
       {
         path: 'credito',
         component: CreditoComponent,
-        canActivate: [PermisosGuard],
+        // canActivate: [PermisosGuard],
       },
       {
         path: 'tienda',
@@ -77,6 +78,7 @@ const routes: Routes = [
     CartLogoModule,
     ComprasModule,
     CardCreditoModule,
+    CardUserModule,
     RouterModule.forChild(routes),
   ],
   providers: [FirestoreService, AuthService],

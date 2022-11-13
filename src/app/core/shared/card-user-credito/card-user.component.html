@@ -1,0 +1,38 @@
+<div
+  data-bs-toggle="collapse"
+  data-bs-target="#navbarSupportedContent"
+  aria-controls="navbarSupportedContent"
+  aria-expanded="false"
+  aria-label="Toggle navigation"
+  class="container border my-2 d-flex text-center"
+>
+  <div class="col" style="max-width: 50px">
+    <img
+      src="/assets/icons/user.png"
+      alt=""
+      style="max-width: 50px; max-height: 50px"
+    />
+  </div>
+  <div class="col">
+    <div class="text">{{ this.user.name }}</div>
+    <div class="text fs-6">{{ this.user.Email }}</div>
+  </div>
+  <div class="col">
+    <div class="text">${{ this.user.credito }}</div>
+    <div class="text">{{ this.user.numberPhone }}</div>
+  </div>
+  <div class="col" style="max-width: 110px">
+    <div
+      data-bs-toggle="modal"
+      data-bs-target="#editEmployee"
+      class="btn btn-primary float-end my-1 me-1"
+      (click)="updateUser(this.user)"
+    >
+      <i class="bx bxs-edit-alt"></i>
+    </div>
+    <div class="btn btn-danger float-end my-1 me-1">
+      <i class="bx bxs-message-alt-x"></i>
+    </div>
+  </div>
+</div>
+<app-edit-user></app-edit-user>

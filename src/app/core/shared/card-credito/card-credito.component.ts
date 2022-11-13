@@ -1,12 +1,17 @@
 import {
   Component,
   ElementRef,
+  EventEmitter,
   Input,
   OnInit,
+  Output,
   Renderer2,
   ViewChild,
 } from '@angular/core';
+import { ReCaptchaEnterpriseProvider } from 'firebase/app-check';
 import { FirestoreService } from 'src/app/service/firestore.service';
+import { NotificacionesService } from 'src/app/service/notificaciones.service';
+import { UserService } from 'src/app/service/user.service';
 import { compraI } from '../../models/compra';
 import { ProductoI } from '../../models/producto';
 
@@ -23,16 +28,23 @@ export class CardCreditoComponent implements OnInit {
   ESTADO_DENEGADO = 'cancelado';
   NO_MOSTRAR = true;
   productos: ProductoI[] = [];
+
+  MESSAGE_ERROR_PENDIENTE = 'La compra su estado sigue siendo pendiente';
+  MESSAGE_SUCCESS_CREDITO = 'El credito ha sido aprobado';
+  MESSAGE_CALCEL_CREDITO = 'El credito ha sido cancelado';
+  MESSAGE_ERROR_CREDITO = 'El usuario no tien el credito suficiente';
   @Input() compra: compraI = {};
+  @Output() actulizar = new EventEmitter<void>();
   CODE_TABLA = this.getRandomCode(1, 2000) + '';
-  constructor(private fire: FirestoreService) {
+  constructor(
+    private fire: FirestoreService,
+    private nofify: NotificacionesService,
+    private user: UserService
+  ) {
     this.nomostrar();
   }
 
   ngOnInit(): void {}
-  ngonChanges(): void {
-    this.compra;
-  }
 
   getRandomCode(min: number, max: number): number {
     min = Math.ceil(min);
@@ -47,6 +59,10 @@ export class CardCreditoComponent implements OnInit {
   }
 
   confirmarCompra() {
+    if (this.user.getCredito! < this.compra.valor!) {
+      this.nofify.showError(this.MESSAGE_ERROR_CREDITO);
+      return;
+    }
     this.compra.estado = this.ESTADO_APROBADO;
     this.fire.upDateEstadoCompra(this.compra).then((l) => {
       console.log('compra aprobada');
@@ -62,5 +78,22 @@ export class CardCreditoComponent implements OnInit {
 
   nomostrar() {
     this.NO_MOSTRAR = this.compra.estado == 'hecho' ? false : true;
+  }
+
+  actulizarlist() {
+    if (this.compra.estado == 'pendiente') {
+      this.nofify.showWarnning(this.MESSAGE_ERROR_PENDIENTE);
+      return;
+    }
+    if (this.compra.estado == 'cancelado') {
+      this.nofify.showError(this.MESSAGE_CALCEL_CREDITO);
+      this.actulizar.emit();
+      return;
+    }
+    if (this.user.getCredito! < this.compra.valor!) {
+      this.nofify.showError(this.MESSAGE_ERROR_CREDITO);
+    }
+    this.actulizar.emit();
+    this.nofify.showSuccess(this.MESSAGE_SUCCESS_CREDITO);
   }
 }

@@ -15,6 +15,7 @@ export class FirestoreService {
   pathUser = 'users';
   pathCategories = 'categories';
   pathProducts = 'products';
+
   pathCompras = 'compras';
   constructor(private firestore: AngularFirestore, private fire: Firestore) {}
 
@@ -136,6 +137,16 @@ export class FirestoreService {
   getAllCompras(): Observable<compraI[]> {
     const UserRef = collection(this.fire, this.pathCompras);
     return collectionData(UserRef, { idField: 'id' }) as Observable<compraI[]>;
+  }
+
+  getALLComprasPenidentes(): compraI[] {
+    let comprasFiltro: compraI[] = [];
+    this.getAllCompras().subscribe((compras) => {
+      comprasFiltro = compras.filter((compra) => {
+        compra.estado == 'pendiente';
+      });
+    });
+    return comprasFiltro;
   }
 
   upDateEstadoCompra(compra: compraI) {

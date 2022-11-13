@@ -1,4 +1,5 @@
 import { compraI } from './compra';
+import { persimisoI } from './permisos';
 
 export interface UserI {
   id?: string;
@@ -13,4 +14,6 @@ export interface UserI {
   Rol?: string;
   credito?: number;
   compras?: compraI[];
+  identificacion?: string;
+  permisos?: persimisoI;
 }

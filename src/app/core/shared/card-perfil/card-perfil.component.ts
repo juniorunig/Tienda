@@ -28,7 +28,6 @@ export class CardPerfilComponent implements OnInit {
   }
 
   cerrarSesion() {
-    this.userServices.setUser = 'user';
     this.auth.logOut();
   }
 
