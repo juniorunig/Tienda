@@ -26,7 +26,6 @@ export class EditUserComponent implements OnInit {
     this.user.numberPhone = this.formUser.value.numberPhone;
     this.user.credito = this.formUser.value.credito;
     // this.user.permisos!.permiso = this.formUser.value.permiso;
-    console.log(this.user);
 
     // conexion con firestore
 

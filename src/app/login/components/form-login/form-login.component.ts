@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { map } from 'rxjs';
 import { UserI } from 'src/app/core/models/user';
 import { AuthService } from 'src/app/service/auth.service';
 import { FirestoreService } from 'src/app/service/firestore.service';
@@ -37,7 +38,7 @@ export class FormLoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.CargarDatos;
+    // this.userService.CargarDatos;
   }
 
   // login normal correo y contraseña
@@ -57,7 +58,6 @@ export class FormLoginComponent implements OnInit {
   // login con google
   async LoginWithGoogle() {
     await this.auth.googleAuth().then((user) => {
-      this.userService.setUser;
       this.router.navigate(['/home']);
     });
   }

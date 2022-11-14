@@ -22,11 +22,13 @@ export class InicioComponent implements OnInit {
     }
 
     this.getComprasAntiguas();
-    this.user.CargarDatos;
+    // this.user.CargarDatos;
+    // this.user.SaveUser();
   }
 
   ngOnInit(): void {
     console.log('VERSION DE LA APP 4.0');
+    console.log(this.user.getRol + 'desde inicio');
   }
 
   // ngDoCheck() {

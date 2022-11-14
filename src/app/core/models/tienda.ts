@@ -5,4 +5,5 @@ export interface tiendaI {
   propietario?: string;
   direccion?: string;
   photoUrl?: string;
+  codigo?: string;
 }

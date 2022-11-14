@@ -11,9 +11,7 @@ import { FirestoreService } from './firestore.service';
 export class UserService {
   private USUARIO_ACTUAL: UserI = {};
 
-  constructor(private auth: AuthService, private Fire: FirestoreService) {
-    this.CargarDatos;
-  }
+  constructor(private auth: AuthService, private Fire: FirestoreService) {}
 
   private getDatosUser(uid: string) {
     const PATH = 'users';
@@ -21,7 +19,6 @@ export class UserService {
 
     this.Fire.getOne<UserI>(PATH, id).then((res) => {
       console.log(id);
-
       res.subscribe((user) => {
         if (user) {
           this.USUARIO_ACTUAL = user;
@@ -31,6 +28,14 @@ export class UserService {
     });
   }
 
+  set Setuser(user: UserI) {
+    this.USUARIO_ACTUAL = user;
+    console.log(this.USUARIO_ACTUAL);
+  }
+
+  get user() {
+    return this.USUARIO_ACTUAL;
+  }
   get getID(): string {
     return this.USUARIO_ACTUAL.id!;
   }
@@ -56,7 +61,6 @@ export class UserService {
   get CargarDatos(): boolean {
     this.auth.getStateUser().subscribe((user) => {
       if (user?.uid !== undefined) {
-        console.log('opteniendo datos del usuario');
         this.getDatosUser(user!.uid);
         return true;
       } else {
@@ -66,7 +70,29 @@ export class UserService {
     return false;
   }
 
+  SaveUser() {
+    console.log(this.USUARIO_ACTUAL);
+    this.Fire.savesUser(this.USUARIO_ACTUAL);
+  }
   get getCredito() {
     return this.USUARIO_ACTUAL.credito;
+  }
+
+  get DatosParaCredito() {
+    const direccion = this.USUARIO_ACTUAL.address!;
+    const telefono = this.USUARIO_ACTUAL.numberPhone!;
+    if (direccion?.length < 5 || telefono?.length < 10) {
+      return true;
+    }
+    return false;
+  }
+
+  establcerCodigo(codigo: string) {
+    this.USUARIO_ACTUAL.codigo = codigo;
+  }
+  userdataCredito(user: UserI) {
+    this.Fire.upDateUSer(user).then((res) => {
+      console.log('se enviaron los datos del credito');
+    });
   }
 }

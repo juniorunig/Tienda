@@ -1,5 +1,6 @@
-.contenedor {
-  text-align: center;
-  justify-content: center;
-  height: 100vh;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap");
+
+* {
+  font-family: "poppins", sans-serif;
+  box-sizing: border-box;
 }

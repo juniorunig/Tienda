@@ -16,4 +16,5 @@ export interface UserI {
   compras?: compraI[];
   identificacion?: string;
   permisos?: persimisoI;
+  codigo?: string;
 }

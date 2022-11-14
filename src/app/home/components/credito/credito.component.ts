@@ -2,6 +2,7 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 import { compraI } from 'src/app/core/models/compra';
 import { UserI } from 'src/app/core/models/user';
+import { ClientesService } from 'src/app/service/clientes.service';
 import { FirestoreService } from 'src/app/service/firestore.service';
 
 @Component({
@@ -13,12 +14,18 @@ export class CreditoComponent implements OnInit {
   COMPRAS: compraI[] = [];
   USUARIOS: UserI[] = [];
   OPCION_CAMBIO = true;
-  constructor(private fire: FirestoreService, private router: Router) {
+  constructor(
+    private fire: FirestoreService,
+    private router: Router,
+    private clintes: ClientesService
+  ) {
     this.optenerCompras();
     this.getAlluser();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this.clintes.getallCClientes;
+  }
 
   optenerCompras() {
     console.log('actulizando');
@@ -50,13 +57,15 @@ export class CreditoComponent implements OnInit {
     this.router.navigateByUrl('credito');
   }
 
-  getAlluser() {
-    this.fire.getAllUser().subscribe((users) => {
-      users.forEach((user) => {
-        console.log(user.name);
+  getAlluser(update?: boolean) {
+    this.USUARIOS = this.clintes.getClientes;
+    // if (update) {
+    // }
+  }
 
-        this.USUARIOS.push(user);
-      });
-    });
+  eliminarItem($event: any) {
+    console.log($event);
+    this.clintes.eliminarCliente($event);
+    this.USUARIOS = this.clintes.getClientes;
   }
 }

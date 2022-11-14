@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { CategoriaI } from '../core/models/categoria';
 import { ProductoI } from '../core/models/producto';
 import { compraI } from '../core/models/compra';
+import { tiendaI } from '../core/models/tienda';
 
 @Injectable({
   providedIn: 'root',
@@ -17,13 +18,20 @@ export class FirestoreService {
   pathProducts = 'products';
 
   pathCompras = 'compras';
+  pathTienda = 'tiendas';
   constructor(private firestore: AngularFirestore, private fire: Firestore) {}
 
   savesUser(user: UserI) {
-    if (user.id === undefined) {
+    console.log(user.Rol + 'roooooooooooooool');
+
+    if (user.id == undefined) {
       return;
     }
-    this.createDoc(user, this.pathUser, user.id)
+    if (user.Rol === 'admin') {
+      user.Rol = 'admin';
+    }
+
+    this.createDoc(user, this.pathUser, user.id!)
       .then((inf) => {
         console.log('todo correcto desde el fireservice');
       })
@@ -43,14 +51,23 @@ export class FirestoreService {
   }
 
   DeleteUser(user: UserI) {
+    console.log(user);
+
     const userRef = doc(this.fire, `${this.pathUser}/${user.id}`);
     return deleteDoc(userRef);
   }
 
+  upDateUSer(user: UserI) {
+    const id = user.id;
+    return this.firestore.collection(this.pathUser).doc(id).update(user);
+  }
+
   async getOne<tipo>(path: string, id: string) {
     // const docRef = doc(this.fire, `${this.pathUser}/${id}`);
+    console.log(path + id + '++++++++');
+
     // return getDoc(docRef);
-    return this.firestore.collection(path).doc<tipo>(id).valueChanges();
+    return await this.firestore.collection(path).doc<tipo>(id).valueChanges();
   }
 
   getAllCategories(): Observable<CategoriaI[]> {
@@ -105,23 +122,6 @@ export class FirestoreService {
     return this.firestore.createId();
   }
 
-  existe(email: string) {
-    let existe = false;
-    if (email !== undefined) {
-      const res = this.getAllUser().subscribe((usuarios) => {
-        usuarios.forEach((us) => {
-          if (us.Email === email) {
-            console.log('el usurio existe');
-            existe = true;
-            return;
-          }
-        });
-      });
-    }
-
-    return existe;
-  }
-
   SaveCompras(compra?: compraI) {
     if (compra?.id !== undefined && compra !== null) {
       this.createDoc(compra, this.pathCompras, compra?.id)
@@ -152,5 +152,12 @@ export class FirestoreService {
   upDateEstadoCompra(compra: compraI) {
     const id = compra.id;
     return this.firestore.collection(this.pathCompras).doc(id).update(compra);
+  }
+
+  // TIENDAS
+
+  getAllTienda(): Observable<tiendaI[]> {
+    const UserRef = collection(this.fire, this.pathTienda);
+    return collectionData(UserRef, { idField: 'id' }) as Observable<tiendaI[]>;
   }
 }

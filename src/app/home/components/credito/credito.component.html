@@ -40,6 +40,11 @@
   </div>
 
   <ng-template #Cerrar>
-    <app-card-user *ngFor="let user of USUARIOS" [user]="user"></app-card-user>
+    <app-card-user
+      *ngFor="let us of USUARIOS"
+      [user]="us"
+      (EliminarItem)="eliminarItem($event)"
+    ></app-card-user>
   </ng-template>
+  <!-- (actulizarUSer)="getAlluser()" -->
 </div>

@@ -1,12 +1,85 @@
 <!-- <app-head-buscar [title]="this.TITULO"></app-head-buscar> -->
-<div class="container-fluid">
-  <div *ngIf="this.PERMISO == 'user'" class="container-fluid">
-    <app-shop-card
-      *ngFor="let tienda of tiendas"
-      [tienda]="tienda"
-      class="text-center"
-    >
-    </app-shop-card>
+<div class="container bg-white" style="max-width: none">
+  <div
+    class="container p-1"
+    style="max-height: max-content"
+    *ngIf="this.PERMISO == 'user'"
+  >
+    <div class="col">
+      <h2>MI CREDITO</h2>
+      <h2 class="text-success">
+        $ {{ this.CREDITO_dISPONIBLE | number: "1.2-2" }}
+      </h2>
+    </div>
+    <div class="col">
+      <label class="form-label">CODIGO DE LA TIENDA</label>
+      <div class="col d-flex">
+        <input type="text" name="text" class="form-control me-1" #codigo />
+        <div class="btn btn-primary" (click)="solicitarCredito(codigo.value)">
+          ENVIAR
+        </div>
+      </div>
+    </div>
+    <div class="container d-flex my-2">
+      <div class="container d-flex px-0 my-2 border">
+        <div class="card-imd-top px-2">
+          <img
+            src="/assets/icons/tienda.svg"
+            alt=""
+            class="my-5 mx-1"
+            style="height: 60; width: 70px"
+          />
+        </div>
+        <div class="card-body my-0">
+          <ul class="mb-0">
+            <li class="col">
+              <p class="text-primary m-0">Nombre</p>
+              {{ this.tienda.nombre }}
+            </li>
+            <li class="col">
+              <p class="text-primary m-0">Propietario</p>
+              {{ this.tienda.propietario }}
+            </li>
+            <li class="col">
+              <p class="text-primary m-0">Direccion</p>
+              {{ this.tienda.direccion }}
+            </li>
+            <!-- <li class="col">{{this.tienda.}}</li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container border p-3 collapse" [id]="CODE_COLAPSE">
+    <h6>para solicitar el credito porfavor ingresar estos datos</h6>
+    <form [formGroup]="datosForm">
+      <div class="col">
+        <label for="email" class="form-label">Direccion</label>
+        <div class="col d-flex">
+          <input
+            type="text"
+            name="adsress"
+            class="form-control me-1"
+            formControlName="address"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <label for="email" class="form-label">telefono</label>
+        <div class="col d-flex">
+          <input
+            type="text"
+            name="numberPhone"
+            class="form-control me-1"
+            formControlName="numberPhone"
+          />
+        </div>
+      </div>
+      <div class="btn btn-primary my-2" (click)="validarRegistro()">
+        Confirmar
+      </div>
+    </form>
   </div>
 
   <app-crud-product *ngIf="PERMISO == 'admin'"></app-crud-product>

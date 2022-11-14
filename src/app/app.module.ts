@@ -16,13 +16,14 @@ import { initializeApp } from 'firebase/app';
 import { AuthService } from './service/auth.service';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ComfirmModalComponent } from './core/shared/confirm-dialog/comfirm-modal.component';
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ToastrModule.forRoot({
-      timeOut: 10000,
+      timeOut: 6000,
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),

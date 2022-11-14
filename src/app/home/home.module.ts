@@ -24,6 +24,8 @@ import { ProductCartComponent } from './pages/components/product-cart/product-ca
 import { CardCreditoModule } from '../core/shared/card-credito/card-credito.module';
 import { PermisosGuard } from '../guard/permisos.guard';
 import { CardUserModule } from '../core/shared/card-user-credito/card-user.module';
+import { UserService } from '../service/user.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -42,7 +44,7 @@ const routes: Routes = [
       {
         path: 'credito',
         component: CreditoComponent,
-        // canActivate: [PermisosGuard],
+        canActivate: [PermisosGuard],
       },
       {
         path: 'tienda',
@@ -79,8 +81,10 @@ const routes: Routes = [
     ComprasModule,
     CardCreditoModule,
     CardUserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
   ],
-  providers: [FirestoreService, AuthService],
+  providers: [FirestoreService, AuthService, UserService],
 })
 export class HomeModule {}
