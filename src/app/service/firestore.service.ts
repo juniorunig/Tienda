@@ -51,8 +51,10 @@ export class FirestoreService {
   }
 
   DeleteUser(user: UserI) {
+    if (user === undefined) {
+      return;
+    }
     console.log(user);
-
     const userRef = doc(this.fire, `${this.pathUser}/${user.id}`);
     return deleteDoc(userRef);
   }

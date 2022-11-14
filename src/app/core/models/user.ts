@@ -17,4 +17,5 @@ export interface UserI {
   identificacion?: string;
   permisos?: persimisoI;
   codigo?: string;
+  deuda?: number;
 }

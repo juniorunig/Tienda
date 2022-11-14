@@ -6,6 +6,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
+import { ClientesService } from 'src/app/service/clientes.service';
 import { FirestoreService } from 'src/app/service/firestore.service';
 import { NotificacionesService } from 'src/app/service/notificaciones.service';
 import { UserI } from '../../models/user';
@@ -21,7 +22,7 @@ export class CardUserComponent implements OnInit {
   MENSAJ_CONFIRM_DELETE = 'el usurio a sido eliminado con exito';
   userDelete: UserI = {};
   ID_MODAL = this.getRandomCode(1, 2000) + '';
-
+  CODE_TABLA = this.getRandomCode(1, 2000) + '';
   @Input() user: UserI = {};
   @Output() actulizarUSer = new EventEmitter<void>();
   @Output() EliminarItem = new EventEmitter<UserI>();
@@ -29,7 +30,8 @@ export class CardUserComponent implements OnInit {
 
   constructor(
     private fire: FirestoreService,
-    private notify: NotificacionesService
+    private notify: NotificacionesService,
+    private clienteService: ClientesService
   ) {
     // this.userDelete = this.user;
   }
@@ -38,23 +40,10 @@ export class CardUserComponent implements OnInit {
     this.userDelete = this.user;
   }
 
-  updateUser(user: UserI) {
-    if (user) {
-      console.log(this.userDelete);
-      // user.permisos!.permiso = 1;
-      user.address = 'cll 14 c';
-      user.numberPhone = '3106547703';
-      user.credito = 30000;
-      this.modalEdit.user = user;
-      this.modalEdit.setValue;
-    }
-  }
-
   Eliminar(user?: UserI) {
-    console.log(this.userDelete);
     this.EliminarItem.emit(this.userDelete);
     this.notify.showSuccess(this.MENSAJ_CONFIRM_DELETE);
-    this.actulizarUSer.emit();
+    this.EliminarItem.emit(this.user);
   }
 
   getRandomCode(min: number, max: number): number {
@@ -62,4 +51,30 @@ export class CardUserComponent implements OnInit {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
   }
+
+  configurando() {
+    let submenu = document.getElementById(this.CODE_TABLA);
+    submenu?.classList.toggle('show');
+    console.log('agregando');
+  }
+
+  capturardatos(address: string, telefono: string, credito: string) {
+    if (address.length < 1 || telefono.length < 1 || credito.length < 1) {
+      this.notify.showError('rellene todo los campos');
+      return;
+    }
+    if (credito === '') {
+      this.notify.showError('valor del credito invalido');
+      return;
+    }
+    let credit = parseFloat(credito);
+    console.log(address, telefono, credit);
+    this.user.address = address;
+    this.user.numberPhone = telefono;
+    this.user.credito = credit;
+    this.clienteService.updateCliente(this.user);
+    this.notify.showSuccess('se ha establecido un nuevo credito');
+  }
+
+  cancelar(uaser: UserI) {}
 }

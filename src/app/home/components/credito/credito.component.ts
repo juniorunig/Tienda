@@ -58,9 +58,9 @@ export class CreditoComponent implements OnInit {
   }
 
   getAlluser(update?: boolean) {
+    this.USUARIOS = [];
     this.USUARIOS = this.clintes.getClientes;
-    // if (update) {
-    // }
+    console.log(this.USUARIOS);
   }
 
   eliminarItem($event: any) {
