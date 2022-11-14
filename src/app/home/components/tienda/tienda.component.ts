@@ -20,6 +20,7 @@ export class TiendaComponent implements OnInit {
   PERMISO = 'user';
   TITULO = 'TIENDAS';
   CREDITO_dISPONIBLE = 0;
+  DEUDA = 0;
   MESSAGE_DATOS_INCOMPLETOS = 'Por favor llene los datos del formulario';
   MESAAGE_CONFIRM_UPDATE = 'los datos han sido enviados con exito';
   CODE_COLAPSE = 'colapse';
@@ -58,7 +59,8 @@ export class TiendaComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTienda();
-    this.CREDITO_dISPONIBLE = this.userService.getCredito!;
+    this.DEUDA = this.userService.gerDeuda!;
+    this.CREDITO_dISPONIBLE = this.userService.getCredito! - this.DEUDA;
   }
 
   configurando() {

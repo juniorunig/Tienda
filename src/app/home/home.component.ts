@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
     Password: '',
     Rol: '',
     credito: 0,
+    deuda: 0,
     codigo: '',
   };
   constructor(

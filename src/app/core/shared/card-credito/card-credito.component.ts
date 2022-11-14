@@ -9,6 +9,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ReCaptchaEnterpriseProvider } from 'firebase/app-check';
+import { ComprasService } from 'src/app/service/compras.service';
 import { FirestoreService } from 'src/app/service/firestore.service';
 import { NotificacionesService } from 'src/app/service/notificaciones.service';
 import { UserService } from 'src/app/service/user.service';
@@ -39,7 +40,8 @@ export class CardCreditoComponent implements OnInit {
   constructor(
     private fire: FirestoreService,
     private nofify: NotificacionesService,
-    private user: UserService
+    private user: UserService,
+    private compraService: ComprasService
   ) {
     this.nomostrar();
   }
@@ -59,7 +61,10 @@ export class CardCreditoComponent implements OnInit {
   }
 
   confirmarCompra() {
-    if (this.user.getCredito! < this.compra.valor!) {
+    const creditouser = this.user.consultarCredito(this.compra.id_user!);
+    console.log(creditouser);
+
+    if (creditouser! < this.compra.valor!) {
       this.nofify.showError(this.MESSAGE_ERROR_CREDITO);
       return;
     }
@@ -67,6 +72,8 @@ export class CardCreditoComponent implements OnInit {
     this.fire.upDateEstadoCompra(this.compra).then((l) => {
       console.log('compra aprobada');
     });
+
+    // this.nofify.showSuccess('credito aprobado con exito');
   }
 
   CancelarCompra() {
@@ -94,6 +101,7 @@ export class CardCreditoComponent implements OnInit {
       this.nofify.showError(this.MESSAGE_ERROR_CREDITO);
     }
     this.actulizar.emit();
+    this.compraService.CargarCompra(this.compra.id_user!, this.compra.valor!);
     this.nofify.showSuccess(this.MESSAGE_SUCCESS_CREDITO);
   }
 }

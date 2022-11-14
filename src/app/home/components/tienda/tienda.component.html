@@ -5,11 +5,18 @@
     style="max-height: max-content"
     *ngIf="this.PERMISO == 'user'"
   >
-    <div class="col">
-      <h2>MI CREDITO</h2>
-      <h2 class="text-success">
-        $ {{ this.CREDITO_dISPONIBLE | number: "1.2-2" }}
-      </h2>
+    <div class="col d-flex">
+      <div class="col">
+        <h2>MI CREDITO</h2>
+        <h2 class="text-success">
+          $ {{ this.CREDITO_dISPONIBLE | number: "1.2-2" }}
+        </h2>
+      </div>
+      <div class="col text-center">
+        <h2>DEUDA</h2>
+
+        <h2 class="text-danger">$ {{ this.DEUDA | number: "1.2-2" }}</h2>
+      </div>
     </div>
     <div class="col">
       <label class="form-label">CODIGO DE LA TIENDA</label>

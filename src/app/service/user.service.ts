@@ -78,6 +78,10 @@ export class UserService {
     return this.USUARIO_ACTUAL.credito;
   }
 
+  get gerDeuda() {
+    return this.USUARIO_ACTUAL.deuda;
+  }
+
   get DatosParaCredito() {
     const direccion = this.USUARIO_ACTUAL.address!;
     const telefono = this.USUARIO_ACTUAL.numberPhone!;
@@ -93,6 +97,16 @@ export class UserService {
   userdataCredito(user: UserI) {
     this.Fire.upDateUSer(user).then((res) => {
       console.log('se enviaron los datos del credito');
+    });
+  }
+
+  consultarCredito(id: string) {
+    const PATH = 'users';
+    const uid = id;
+    this.Fire.getOne<UserI>(PATH, uid).then((res) => {
+      res.subscribe((user) => {
+        return user!.credito;
+      });
     });
   }
 }
