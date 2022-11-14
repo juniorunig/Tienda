@@ -39,22 +39,22 @@ const routes: Routes = [
       {
         path: 'productos',
         component: ProductoComponent,
-        // canActivate: [PermisosGuard],
+        canActivate: [PermisosGuard],
       },
       {
         path: 'credito',
         component: CreditoComponent,
-        // canActivate: [PermisosGuard],
+        canActivate: [PermisosGuard],
       },
       {
         path: 'tienda',
         component: TiendaComponent,
-        // canActivate: [PermisosGuard],
+        canActivate: [PermisosGuard],
       },
       {
         path: 'tienda/compras',
         component: ComprasComponent,
-        // canActivate: [PermisosGuard],
+        canActivate: [PermisosGuard],
       },
     ],
   },
